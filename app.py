@@ -82,7 +82,7 @@ if selected_month == "Entire Year":
 
         language_data = {"Language": list(language_counts.keys()), "# of Books": list(language_counts.values())}
         fig = px.bar(language_data, x="Language", y="# of Books", color="Language", color_discrete_sequence=colors)
-        fig.update_layout(width=400, height=400)
+        fig.update_layout(width=350, height=400)
         fig.update_layout(showlegend=False)
         st.plotly_chart(fig)
 
@@ -92,7 +92,7 @@ if selected_month == "Entire Year":
         st.write("**Book Ratings vs. Page Count**")
         fig = px.scatter(book_df, x='Pages', y='Rating', color='Title', hover_data=['Title', 'Author'], color_discrete_sequence=colors)
         fig.update_yaxes(range=[.5, 5.5])
-        fig.update_layout(width=400, height=400)
+        fig.update_layout(width=350, height=400)
         fig.update_layout(showlegend=False)
         st.plotly_chart(fig)
 
@@ -111,7 +111,7 @@ if selected_month == "Entire Year":
         fig = px.line(book_df, x='End Date', y='Cumulative Pages',
                     labels={'Cumulative Pages': 'Total Pages Read', 'End Date': 'Date'}, color_discrete_sequence=colors)
         
-        fig.update_layout(width=400, height=400)
+        fig.update_layout(width=350, height=400)
         fig.update_layout(showlegend=False)
 
         fig.update_layout(
@@ -131,7 +131,7 @@ if selected_month == "Entire Year":
             return random.choice(colors)
 
         # Create a word cloud
-        wordcloud = WordCloud(width=800, height=700, background_color='white', color_func=custom_color_func).generate(authors_text)
+        wordcloud = WordCloud(width=750, height=700, background_color='white', color_func=custom_color_func).generate(authors_text)
 
         # Plot the word cloud using Matplotlib
         plt.figure(figsize=(10, 5))
@@ -160,7 +160,7 @@ elif selected_month == "January":
 
         # genre dist
         fig = px.pie(jan_books, names='Genre', title='Genre Distribution',  color_discrete_sequence=colors)
-        fig.update_layout(width=400, height=400)
+        fig.update_layout(width=350, height=400)
         fig.update_layout(showlegend=False)
         st.plotly_chart(fig)
 
@@ -169,7 +169,7 @@ elif selected_month == "January":
 
         # Create a bar chart for page counts using Plotly Express
         fig = px.bar(x=df_sorted["Title"], y=df_sorted["Pages"], labels={'x':'Book Title', 'y':'Page Count'}, color=df_sorted["Title"], title='Page Count', color_discrete_sequence=colors)
-        fig.update_layout(width=400, height=400)
+        fig.update_layout(width=350, height=400)
         fig.update_layout(showlegend=False)
         st.plotly_chart(fig)
     
@@ -187,13 +187,13 @@ elif selected_month == "January":
 
         fig = px.bar(df, x="Title", y="Duration", color="Title", title="Book Durations", labels={"Duration": "Days"}, color_discrete_sequence=colors)
         fig.update_layout(barmode='stack')
-        fig.update_layout(width=400, height=400)
+        fig.update_layout(width=350, height=400)
         fig.update_layout(showlegend=False)
         st.plotly_chart(fig)
 
         # page count vs. rating
         fig = px.box(jan_books, y='Rating', title='Book Ratings', color_discrete_sequence=colors)
-        fig.update_layout(width=400, height=400)
+        fig.update_layout(width=350, height=400)
         fig.update_layout(showlegend=False)
         st.plotly_chart(fig)
 
@@ -289,7 +289,7 @@ elif selected_month == "February":
 
         # genre dist
         fig = px.pie(feb_books, names='Genre', title='Genre Distribution',  color_discrete_sequence=colors)
-        fig.update_layout(width=400, height=400)
+        fig.update_layout(width=350, height=400)
         fig.update_layout(showlegend=False)
         st.plotly_chart(fig)
 
@@ -298,7 +298,7 @@ elif selected_month == "February":
 
         # Create a bar chart for page counts using Plotly Express
         fig = px.bar(x=df_sorted["Title"], y=df_sorted["Pages"], labels={'x':'Book Title', 'y':'Page Count'}, color=df_sorted["Title"], title='Page Count', color_discrete_sequence=colors)
-        fig.update_layout(width=400, height=400)
+        fig.update_layout(width=350, height=400)
         fig.update_layout(showlegend=False)
         st.plotly_chart(fig)
     
@@ -316,13 +316,13 @@ elif selected_month == "February":
 
         fig = px.bar(df, x="Title", y="Duration", color="Title", title="Book Durations", labels={"Duration": "Days"}, color_discrete_sequence=colors)
         fig.update_layout(barmode='stack')
-        fig.update_layout(width=400, height=400)
+        fig.update_layout(width=350, height=400)
         fig.update_layout(showlegend=False)
         st.plotly_chart(fig)
 
         # page count vs. rating
         fig = px.box(feb_books, y='Rating', title='Book Ratings', color_discrete_sequence=colors)
-        fig.update_layout(width=400, height=400)
+        fig.update_layout(width=350, height=400)
         fig.update_layout(showlegend=False)
         st.plotly_chart(fig)
 
