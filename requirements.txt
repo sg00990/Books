@@ -1,6 +1,6 @@
 streamlit
 pandas
 plotly
-wordcloud
+word_cloud
 matplotlib
 random
