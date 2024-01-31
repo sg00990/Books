@@ -1,6 +1,6 @@
-streamlit
-pandas
-plotly
-word_cloud
-matplotlib
-random
+
+matplotlib==3.8.0
+pandas==2.1.1
+plotly==5.18.0
+wordcloud==1.9.3
+
