@@ -42,7 +42,8 @@ jan_book_data = [
 jan_books = pd.DataFrame(jan_book_data)
 
 feb_book_data = [
-        {"Title": "A Court of Thorns and Roses", "Author": "Sarah J. Dewes", "Genre": "Fantasy", "Language": "English", "Start Date": '01-28-2024', "End Date": '02-03-2024', "Rating": 5, "Pages": 419}
+        {"Title": "A Court of Thorns and Roses", "Author": "Sarah J. Maas", "Genre": "Fantasy", "Language": "English", "Start Date": '01-28-2024', "End Date": '02-01-2024', "Rating": 4, "Pages": 419},
+        {"Title": "A Court of Mist and Fury", "Author": "Sarah J. Maas", "Genre": "Fantasy", "Language": "English", "Start Date": '02-02-2024', "End Date": '02-14-2024', "Rating": 5, "Pages": 656}
 ]
 feb_books = pd.DataFrame(feb_book_data)
 
