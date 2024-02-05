@@ -43,6 +43,7 @@ jan_books = pd.DataFrame(jan_book_data)
 
 feb_book_data = [
         {"Title": "A Court of Thorns and Roses", "Author": "Sarah J. Maas", "Genre": "Fantasy", "Language": "English", "Start Date": '01-28-2024', "End Date": '02-01-2024', "Rating": 4, "Pages": 419},
+        {"Title": "Jujutsu Kaisen #11", "Author": "Gege Akutami", "Genre": "Fantasy", "Language": "Japanese", "Start Date": '02-04-2024', "End Date": '02-04-2024', "Rating": 5, "Pages": 192},
         {"Title": "A Court of Mist and Fury", "Author": "Sarah J. Maas", "Genre": "Fantasy", "Language": "English", "Start Date": '02-02-2024', "End Date": '02-14-2024', "Rating": 5, "Pages": 624}
 ]
 feb_books = pd.DataFrame(feb_book_data)
@@ -351,6 +352,30 @@ elif selected_month == "February":
             st.write(f"**Number of Pages:** {page_result}")
 
         st.write("**Summary:** When nineteen-year-old huntress Feyre kills a wolf in the woods, a terrifying creature arrives to demand retribution. Dragged to a treacherous magical land she knows about only from legends, Feyre discovers that her captor is not truly a beast, but one of the lethal, immortal faeries who once ruled her world.")
+
+    with st.expander("Jujutsu Kaisen #11"):
+        col6, col7 = st.columns(2)
+
+        with col6:
+            st.image("img/jjk_11.jpg", width=250)
+
+        with col7:
+            st.write("**Title:** Jujutsu Kaisen #11")
+
+            author_result = get_author("Jujutsu Kaisen #11")
+            st.write(f"**Author:** {author_result}")
+
+            genre_result = get_genre("Jujutsu Kaisen #11")
+            st.write(f"**Genre:** {genre_result}")
+
+            language_result = get_language("Jujutsu Kaisen #11")
+            st.write(f"**Language:** {language_result}")
+
+            page_result = get_pages("Jujutsu Kaisen #11")
+            st.write(f"**Number of Pages:** {page_result}")
+
+        st.write("**Summary:** Despite the crowd of civilians and transfigured humans, Satoru Gojo is able to defeat the cursed spirits at Shibuya Station. But it's a trap! The cursed spirits possess a special item that can even seal the all-powerful Gojo! Meanwhile, an unlikely ally suddenly contacts Yuji Itadori, who is on his way to the station!")
+
 
 elif selected_month == "March":
     st.write("No data yet.")
