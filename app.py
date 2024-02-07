@@ -256,6 +256,7 @@ def main():
 
         genre_result = get_genre("Beyond the Story: 10 Year Record of BTS", book_df)
         page_result = get_pages("Beyond the Story: 10 Year Record of BTS", book_df)
+        author_result = get_author("Beyond the Story: 10 Year Record of BTS", book_df)
 
         if (genre_result in selected_genre or not selected_genre) and (page_result <= pages) and (author_result in selected_author or not selected_author):
             with st.expander("Beyond the Story: 10 Year Record of BTS"):
@@ -267,7 +268,6 @@ def main():
                 with col7:
                     st.write("**Title:** Beyond the Story: 10 Year Record of BTS")
 
-                    author_result = get_author("Beyond the Story: 10 Year Record of BTS", filtered_data)
                     st.write(f"**Author:** {author_result}")
 
                     st.write(f"**Genre:** {genre_result}")
@@ -282,6 +282,7 @@ def main():
 
         genre_result = get_genre("Jujutsu Kaisen #10", book_df)
         page_result = get_pages("Jujutsu Kaisen #10", book_df)
+        author_result = get_author("Jujutsu Kaisen #10", book_df)
 
         if (genre_result in selected_genre or not selected_genre) and (page_result <= pages) and (author_result in selected_author or not selected_author):
             with st.expander("Jujutsu Kaisen #10"):
@@ -293,7 +294,6 @@ def main():
                 with col7:
                     st.write("**Title:** Jujutsu Kaisen #10")
 
-                    author_result = get_author("Jujutsu Kaisen #10", filtered_data)
                     st.write(f"**Author:** {author_result}")
 
                     st.write(f"**Genre:** {genre_result}")
@@ -308,6 +308,7 @@ def main():
 
         genre_result = get_genre("The Exiled Fleet", book_df)
         page_result = get_pages("The Exiled Fleet", book_df)
+        author_result = get_author("The Exiled Fleet", book_df)
 
         if (genre_result in selected_genre or not selected_genre) and (page_result <= pages) and (author_result in selected_author or not selected_author):
             with st.expander("The Exiled Fleet"):
@@ -319,7 +320,6 @@ def main():
                 with col7:
                     st.write("**Title:** The Exiled Fleet")
 
-                    author_result = get_author("The Exiled Fleet", filtered_data)
                     st.write(f"**Author:** {author_result}")
 
                     st.write(f"**Genre:** {genre_result}")
