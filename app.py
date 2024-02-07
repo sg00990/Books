@@ -26,9 +26,15 @@ def get_pages(book_title, df):
     author = df.loc[df['Title'] == book_title, 'Pages'].iloc[0]
     return author if not pd.isnull(author) else f"No information found for '{book_title}'"
 
+def get_rating(book_title, df):
+    author = df.loc[df['Title'] == book_title, 'Rating'].iloc[0]
+    return author if not pd.isnull(author) else f"No information found for '{book_title}'"
+
+# filters data
 def filter_data(data: pd.DataFrame, column: str, values: List[str]) -> pd.DataFrame:
     return data[data[column].isin(values)] if values else data
 
+# sidebar configuration
 def display_sidebar(df: pd.DataFrame):
     with st.sidebar:
         st.write("**Filters**")
@@ -56,6 +62,7 @@ def display_sidebar(df: pd.DataFrame):
 
     return selected_month, selected_genre, selected_author, pages
 
+# creates charts
 def display_charts(selected_month, df):
     colors = ["#8da683", "#be8f3c", "#d99d29", "#f2dcb1", "#dc8920"]
     
@@ -277,8 +284,11 @@ def main():
 
                     st.write(f"**Number of Pages:** {page_result}")
 
-                st.write("**Summary:** BTS shares personal, behind-the-scenes stories of their journey so far through interviews and more than three years of in-depth coverage by Myeongseok Kang, who has written about K-pop and other Korean pop culture in various media. Presented chronologically in seven chapters from before the debut of BTS to the present, their vivid voices and opinions harmonize to tell a sincere, lively, and deep story. In individual interviews that have been conducted without a camera or makeup, they illuminate their musical journey from multiple angles and discuss its significance.")
+                    rating_result = get_rating("Beyond the Story: 10 Year Record of BTS", filtered_data)
+                    st.write(f"**My Rating:** {rating_result}/5")
 
+                st.write("**Summary:** BTS shares personal, behind-the-scenes stories of their journey so far through interviews and more than three years of in-depth coverage by Myeongseok Kang, who has written about K-pop and other Korean pop culture in various media. Presented chronologically in seven chapters from before the debut of BTS to the present, their vivid voices and opinions harmonize to tell a sincere, lively, and deep story. In individual interviews that have been conducted without a camera or makeup, they illuminate their musical journey from multiple angles and discuss its significance.")
+                st.write("**Thoughts:** As a devoted fan of BTS, I eagerly anticipated the release of a book commemorating their 10-year anniversary. Kang Myeong-seok skillfully narrates the storyline, and the inclusion of interviews with the members adds a valuable layer of insight. Overall, I found the book to be an insightful and enjoyable read.")
 
         genre_result = get_genre("Jujutsu Kaisen #10", book_df)
         page_result = get_pages("Jujutsu Kaisen #10", book_df)
@@ -303,8 +313,11 @@ def main():
 
                     st.write(f"**Number of Pages:** {page_result}")
 
-                st.write("**Summary:** In order to regain use of his crippled body, Kokichi Muta, otherwise known as Mechamaru, has been acting as an informant for the cursed spirits. He’s prepared for the betrayal when he’s thrust into a battle to the death against Mahito, but is knowing his enemy enough against a cursed spirit whose powers keep growing exponentially?")
+                    rating_result = get_rating("Jujutsu Kaisen #10", filtered_data)
+                    st.write(f"**My Rating:** {rating_result}/5")
 
+                st.write("**Summary:** In order to regain use of his crippled body, Kokichi Muta, otherwise known as Mechamaru, has been acting as an informant for the cursed spirits. He’s prepared for the betrayal when he’s thrust into a battle to the death against Mahito, but is knowing his enemy enough against a cursed spirit whose powers keep growing exponentially?")
+                st.write('**Thoughts:** Having been captivated by the masterpiece that is season 2 of the anime Jujutsu Kaisen, I was compelled to purchase several volumes while in Japan. This initial volume was a fantastic start to the series, filled with non-stop action from start to finish. However, it did take me a while to read; who knew I\'d have to learn how to say "cursed technique", "curses", and "sorcerers" in Japanese?')
 
         genre_result = get_genre("The Exiled Fleet", book_df)
         page_result = get_pages("The Exiled Fleet", book_df)
@@ -329,8 +342,13 @@ def main():
 
                     st.write(f"**Number of Pages:** {page_result}")
 
-                st.write("**Summary:** The Sentinels narrowly escaped the collapsing edge of the Divide. They have mustered a few other surviving Sentinels, but with no engines they have no way to leave the edge of the universe before they starve. Adequin Rake has gathered a team to find the materials they'll need to get everyone out.")
+                    rating_result = get_rating("The Exiled Fleet", filtered_data)
+                    st.write(f"**My Rating:** {rating_result}/5")
 
+                st.write("**Summary:** The Sentinels narrowly escaped the collapsing edge of the Divide. They have mustered a few other surviving Sentinels, but with no engines they have no way to leave the edge of the universe before they starve. Adequin Rake has gathered a team to find the materials they'll need to get everyone out.")
+                st.write("**Thoughts:** The Exiled Fleet serves as an amazing sequel to The First Watch, a novel I read in 2022. Throughout this gripping read, you'll find yourself on the edge of your seat. The characters indulge in witty banter and unravel colossal secrets, all while navigating perilous life-and-death scenarios. I must admit, I did not understand a lot of the terminology about space physics and engineering, but I enjoyed it nonetheless!")
+    
+    
     elif selected_month == "February":
         filtered_data = filter_data(book_df, 'Month', [selected_month])
         filtered_data = filter_data(filtered_data, 'Genre', selected_genre)
@@ -367,8 +385,12 @@ def main():
 
                     st.write(f"**Number of Pages:** {page_result}")
 
-                st.write("**Summary:** When nineteen-year-old huntress Feyre kills a wolf in the woods, a terrifying creature arrives to demand retribution. Dragged to a treacherous magical land she knows about only from legends, Feyre discovers that her captor is not truly a beast, but one of the lethal, immortal faeries who once ruled her world.")
+                    rating_result = get_rating("A Court of Thorns and Roses", filtered_data)
+                    st.write(f"**My Rating:** {rating_result}/5")
 
+                st.write("**Summary:** When nineteen-year-old huntress Feyre kills a wolf in the woods, a terrifying creature arrives to demand retribution. Dragged to a treacherous magical land she knows about only from legends, Feyre discovers that her captor is not truly a beast, but one of the lethal, immortal faeries who once ruled her world.")
+                st.write("**Thoughts:** After seeing this book all over TikTok and my local Barnes & Noble, I eventually gave in and bought it. The first two-thirds of the book were a bit slow-paced, likely due to world-building, but the story really picked up momentum towards the end. Hopefully the sequel has more plot.")
+        
         genre_result = get_genre("Jujutsu Kaisen #11", book_df)
         page_result = get_pages("Jujutsu Kaisen #11", book_df)
         author_result = get_author("Jujutsu Kaisen #11", book_df)
@@ -392,8 +414,12 @@ def main():
 
                     st.write(f"**Number of Pages:** {page_result}")
 
-                st.write("**Summary:** Despite the crowd of civilians and transfigured humans, Satoru Gojo is able to defeat the cursed spirits at Shibuya Station. But it's a trap! The cursed spirits possess a special item that can even seal the all-powerful Gojo! Meanwhile, an unlikely ally suddenly contacts Yuji Itadori, who is on his way to the station!")
+                    rating_result = get_rating("Jujutsu Kaisen #11", filtered_data)
+                    st.write(f"**My Rating:** {rating_result}/5")
 
+                st.write("**Summary:** Despite the crowd of civilians and transfigured humans, Satoru Gojo is able to defeat the cursed spirits at Shibuya Station. But it's a trap! The cursed spirits possess a special item that can even seal the all-powerful Gojo! Meanwhile, an unlikely ally suddenly contacts Yuji Itadori, who is on his way to the station!")
+                st.write("**Thoughts:** In Volume 11 of Jujutsu Kaisen, the focus shifts to the other characters in Shibuya. While it may contain less action compared to the last volume, I appreciated the opportunity to delve deeper into various characters' situations and battles.")
+   
                 genre_result = get_genre("Jujutsu Kaisen #11", book_df)
         
         
@@ -419,8 +445,11 @@ def main():
 
                     st.write(f"**Number of Pages:** {page_result}")
 
-                st.write("**Summary:** Feyre has undergone more trials than one human woman can carry in her heart. Though she's now been granted the powers and lifespan of the High Fae, she is haunted by her time Under the Mountain and the terrible deeds she performed to save the lives of Tamlin and his people. As her marriage to Tamlin approaches, Feyre's hollowness and nightmares consume her. She finds herself split into two different people: one who upholds her bargain with Rhysand, High Lord of the feared Night Court, and one who lives out her life in the Spring Court with Tamlin. While Feyre navigates a dark web of politics, passion, and dazzling power, a greater evil looms. She might just be the key to stopping it, but only if she can harness her harrowing gifts, heal her fractured soul, and decide how she wishes to shape her future-and the future of a world in turmoil.")
+                    rating_result = get_rating("A Court of Mist and Fury", filtered_data)
+                    st.write(f"**My Rating:** {rating_result}/5")
 
+                st.write("**Summary:** Feyre has undergone more trials than one human woman can carry in her heart. Though she's now been granted the powers and lifespan of the High Fae, she is haunted by her time Under the Mountain and the terrible deeds she performed to save the lives of Tamlin and his people. As her marriage to Tamlin approaches, Feyre's hollowness and nightmares consume her. She finds herself split into two different people: one who upholds her bargain with Rhysand, High Lord of the feared Night Court, and one who lives out her life in the Spring Court with Tamlin. While Feyre navigates a dark web of politics, passion, and dazzling power, a greater evil looms. She might just be the key to stopping it, but only if she can harness her harrowing gifts, heal her fractured soul, and decide how she wishes to shape her future-and the future of a world in turmoil.")
+                st.write("**Thoughts:** Ah, now I understand the hype surrounding this series! I found myself utterly captivated by this book, devouring about 100 pages each day. It's so, so good! With its intricate plot, themes of betrayal, complex relationships, and gripping depiction of an upcoming war between Fae and humans alike, it's truly a compelling read. Also, love having a strong female lead!")
     
 
 if __name__ == '__main__':
