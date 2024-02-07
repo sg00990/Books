@@ -257,7 +257,7 @@ def main():
         genre_result = get_genre("Beyond the Story: 10 Year Record of BTS", book_df)
         page_result = get_pages("Beyond the Story: 10 Year Record of BTS", book_df)
 
-        if (genre_result in selected_genre or not selected_genre) and (page_result <= pages):
+        if (genre_result in selected_genre or not selected_genre) and (page_result <= pages) and (author_result in selected_author or not selected_author):
             with st.expander("Beyond the Story: 10 Year Record of BTS"):
                 col6, col7 = st.columns(2)
 
@@ -283,7 +283,7 @@ def main():
         genre_result = get_genre("Jujutsu Kaisen #10", book_df)
         page_result = get_pages("Jujutsu Kaisen #10", book_df)
 
-        if (genre_result in selected_genre or not selected_genre) and (page_result <= pages):
+        if (genre_result in selected_genre or not selected_genre) and (page_result <= pages) and (author_result in selected_author or not selected_author):
             with st.expander("Jujutsu Kaisen #10"):
                 col6, col7 = st.columns(2)
 
@@ -309,7 +309,7 @@ def main():
         genre_result = get_genre("The Exiled Fleet", book_df)
         page_result = get_pages("The Exiled Fleet", book_df)
 
-        if (genre_result in selected_genre or not selected_genre) and (page_result <= pages):
+        if (genre_result in selected_genre or not selected_genre) and (page_result <= pages) and (author_result in selected_author or not selected_author):
             with st.expander("The Exiled Fleet"):
                 col6, col7 = st.columns(2)
 
