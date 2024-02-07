@@ -346,7 +346,7 @@ def main():
                     st.write(f"**My Rating:** {rating_result}/5")
 
                 st.write("**Summary:** The Sentinels narrowly escaped the collapsing edge of the Divide. They have mustered a few other surviving Sentinels, but with no engines they have no way to leave the edge of the universe before they starve. Adequin Rake has gathered a team to find the materials they'll need to get everyone out.")
-                st.write("**Thoughts:** The Exiled Fleet serves as an amazing sequel to The First Watch, a novel I read in 2022. Throughout this gripping read, you'll find yourself on the edge of your seat. The characters indulge in witty banter and unravel colossal secrets, all while navigating perilous life-and-death scenarios. I must admit, I did not understand a lot of the terminology about space physics and engineering, but I enjoyed it nonetheless!")
+                st.write("**Thoughts:** The Exiled Fleet serves as an amazing sequel to The Last Watch, a novel I read in 2022. Throughout this gripping read, you'll find yourself on the edge of your seat. The characters indulge in witty banter and unravel colossal secrets, all while navigating perilous life-and-death scenarios. I must admit, I did not understand a lot of the terminology about space physics and engineering, but I enjoyed it nonetheless!")
     
     
     elif selected_month == "February":
