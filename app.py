@@ -244,6 +244,7 @@ def main():
     elif selected_month == "January":
         filtered_data = filter_data(book_df, 'Month', [selected_month])
         filtered_data = filter_data(filtered_data, 'Genre', selected_genre)
+        filtered_data = filter_data(filtered_data, 'Author', selected_author)
         filtered_data = filtered_data[filtered_data['Pages'] <= pages]
         
         try:
@@ -333,6 +334,7 @@ def main():
     elif selected_month == "February":
         filtered_data = filter_data(book_df, 'Month', [selected_month])
         filtered_data = filter_data(filtered_data, 'Genre', selected_genre)
+        filtered_data = filter_data(filtered_data, 'Author', selected_author)
         filtered_data = filtered_data[filtered_data['Pages'] <= pages]
 
         try:
