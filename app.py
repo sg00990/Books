@@ -218,7 +218,7 @@ def main():
 
     # book data per month
     jan_book_data = [
-        {"Month": "January", "Title": "Beyond the Story: 10 Year Record of BTS", "Author": "Kang Myeong-seok, BTS", "Genre": "Nonfiction", "Language": "English", "Start Date": '12-26-2023', "End Date": '01-02-2024', "Rating": 4, "Pages": 544},
+        {"Month": "January", "Title": "Beyond the Story: 10 Year Record of BTS", "Author": "Kang Myeong-seok, BTS", "Genre": "Nonfiction", "Language": "English", "Start Date": '12-26-2023', "End Date": '01-02-2024', "Rating": 4.5, "Pages": 544},
         {"Month": "January", "Title": "Jujutsu Kaisen #10", "Author": "Gege Akutami", "Genre": "Fantasy", "Language": "Japanese", "Start Date": '01-03-2024', "End Date": '01-06-2024', "Rating": 5, "Pages": 192},
         {"Month": "January", "Title": "The Exiled Fleet", "Author": "J.S. Dewes", "Genre": "Science Fiction", "Language": "English", "Start Date": '01-21-2024', "End Date": '01-27-2024', "Rating": 5, "Pages": 420}
     ]
@@ -227,7 +227,8 @@ def main():
     feb_book_data = [
             {"Month": "February", "Title": "A Court of Thorns and Roses", "Author": "Sarah J. Maas", "Genre": "Fantasy", "Language": "English", "Start Date": '01-28-2024', "End Date": '02-01-2024', "Rating": 4, "Pages": 419},
             {"Month": "February", "Title": "Jujutsu Kaisen #11", "Author": "Gege Akutami", "Genre": "Fantasy", "Language": "Japanese", "Start Date": '02-04-2024', "End Date": '02-04-2024', "Rating": 5, "Pages": 192},
-            {"Month": "February", "Title": "A Court of Mist and Fury", "Author": "Sarah J. Maas", "Genre": "Fantasy", "Language": "English", "Start Date": '02-02-2024', "End Date": '02-07-2024', "Rating": 5, "Pages": 624}
+            {"Month": "February", "Title": "A Court of Mist and Fury", "Author": "Sarah J. Maas", "Genre": "Fantasy", "Language": "English", "Start Date": '02-02-2024', "End Date": '02-07-2024', "Rating": 5, "Pages": 624},
+            {"Month": "February", "Title": "Naruto #1", "Author": "Masashi Kishimoto", "Genre": "Action", "Language": "Japanese", "Start Date": '02-07-2024', "End Date": '02-08-2024', "Rating": 5, "Pages": 187},
     ]
     feb_books = pd.DataFrame(feb_book_data)
 
@@ -419,12 +420,11 @@ def main():
 
                 st.write("**Summary:** Despite the crowd of civilians and transfigured humans, Satoru Gojo is able to defeat the cursed spirits at Shibuya Station. But it's a trap! The cursed spirits possess a special item that can even seal the all-powerful Gojo! Meanwhile, an unlikely ally suddenly contacts Yuji Itadori, who is on his way to the station!")
                 st.write("**Thoughts:** In Volume 11 of Jujutsu Kaisen, the focus shifts to the other characters in Shibuya. While it may contain less action compared to the last volume, I appreciated the opportunity to delve deeper into various characters' situations and battles.")
-   
-                genre_result = get_genre("Jujutsu Kaisen #11", book_df)
         
         
         page_result = get_pages("A Court of Mist and Fury", book_df)
         author_result = get_author("A Court of Mist and Fury", book_df)
+        genre_result = get_genre("A Court of Mist and Fury", book_df)
 
         if (genre_result in selected_genre or not selected_genre) and (page_result <= pages) and (author_result in selected_author or not selected_author):
             with st.expander("A Court of Mist and Fury"):
@@ -450,6 +450,37 @@ def main():
 
                 st.write("**Summary:** Feyre has undergone more trials than one human woman can carry in her heart. Though she's now been granted the powers and lifespan of the High Fae, she is haunted by her time Under the Mountain and the terrible deeds she performed to save the lives of Tamlin and his people. As her marriage to Tamlin approaches, Feyre's hollowness and nightmares consume her. She finds herself split into two different people: one who upholds her bargain with Rhysand, High Lord of the feared Night Court, and one who lives out her life in the Spring Court with Tamlin. While Feyre navigates a dark web of politics, passion, and dazzling power, a greater evil looms. She might just be the key to stopping it, but only if she can harness her harrowing gifts, heal her fractured soul, and decide how she wishes to shape her future-and the future of a world in turmoil.")
                 st.write("**Thoughts:** Ah, now I understand the hype surrounding this series! I found myself utterly captivated by this book, devouring about 100 pages each day. It's so, so good! With its intricate plot, themes of betrayal, complex relationships, and gripping depiction of an upcoming war between Fae and humans alike, it's truly a compelling read. Also, love having a strong female lead!")
+
+        
+        page_result = get_pages("Naruto #1", book_df)
+        author_result = get_author("Naruto #1", book_df)
+        genre_result = get_genre("Naruto #1", book_df)
+
+        if (genre_result in selected_genre or not selected_genre) and (page_result <= pages) and (author_result in selected_author or not selected_author):
+            with st.expander("Naruto #1"):
+                col6, col7 = st.columns(2)
+
+                with col6:
+                    st.image("img/naruto_1.jpg", width=200)
+
+                with col7:
+                    st.write("**Title:** Naruto #1")
+
+                    st.write(f"**Author:** {author_result}")
+
+                    st.write(f"**Genre:** {genre_result}")
+
+                    language_result = get_language("Naruto #1", filtered_data)
+                    st.write(f"**Language:** {language_result}")
+
+                    st.write(f"**Number of Pages:** {page_result}")
+
+                    rating_result = get_rating("Naruto #1", filtered_data)
+                    st.write(f"**My Rating:** {rating_result}/5")
+
+                st.write("**Summary:** Twelve years ago the Village Hidden in the Leaves was attacked by a fearsome threat. A nine-tailed fox spirit claimed the life of the village leader, the Hokage, and many others. Today, the village is at peace and a troublemaking kid named Naruto is struggling to graduate from Ninja Academy.")
+                st.write("**Thoughts:** After binge-watching the entire series (yes, all 500+ episodes) over two months years ago, I was thrilled to discover this book at a nearby Kinokuniya. It proved to be a much easier read compared to Jujutsu Kaisen.")
+    
     
 
 if __name__ == '__main__':
