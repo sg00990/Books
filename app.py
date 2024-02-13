@@ -217,25 +217,21 @@ def main():
     st.title("📚 2024 Bookshelf")
 
     # book data per month
-    jan_book_data = [
+    book_data = [
         {"Month": "January", "Title": "Beyond the Story: 10 Year Record of BTS", "Author": "Kang Myeong-seok, BTS", "Genre": "Nonfiction", "Language": "English", "Start Date": '12-26-2023', "End Date": '01-02-2024', "Rating": 4.5, "Pages": 544},
         {"Month": "January", "Title": "Jujutsu Kaisen #10", "Author": "Gege Akutami", "Genre": "Fantasy", "Language": "Japanese", "Start Date": '01-03-2024', "End Date": '01-06-2024', "Rating": 5, "Pages": 192},
-        {"Month": "January", "Title": "The Exiled Fleet", "Author": "J.S. Dewes", "Genre": "Science Fiction", "Language": "English", "Start Date": '01-21-2024', "End Date": '01-27-2024', "Rating": 5, "Pages": 420}
+        {"Month": "January", "Title": "The Exiled Fleet", "Author": "J.S. Dewes", "Genre": "Science Fiction", "Language": "English", "Start Date": '01-21-2024', "End Date": '01-27-2024', "Rating": 5, "Pages": 420},
+        {"Month": "February", "Title": "A Court of Thorns and Roses", "Author": "Sarah J. Maas", "Genre": "Fantasy", "Language": "English", "Start Date": '01-28-2024', "End Date": '02-01-2024', "Rating": 4, "Pages": 419},
+        {"Month": "February", "Title": "Jujutsu Kaisen #11", "Author": "Gege Akutami", "Genre": "Fantasy", "Language": "Japanese", "Start Date": '02-04-2024', "End Date": '02-04-2024', "Rating": 5, "Pages": 192},
+        {"Month": "February", "Title": "A Court of Mist and Fury", "Author": "Sarah J. Maas", "Genre": "Fantasy", "Language": "English", "Start Date": '02-02-2024', "End Date": '02-07-2024', "Rating": 5, "Pages": 624},
+        {"Month": "February", "Title": "Naruto #1", "Author": "Masashi Kishimoto", "Genre": "Action", "Language": "Japanese", "Start Date": '02-07-2024', "End Date": '02-08-2024', "Rating": 5, "Pages": 187},
+        {"Month": "February", "Title": "A Court of Wings and Ruin", "Author": "Sarah J. Maas", "Genre": "Fantasy", "Language": "English", "Start Date": '02-08-2024', "End Date": '02-11-2024', "Rating": 5, "Pages": 699},
+        {"Month": "February", "Title": "A Court of Frost and Starlight", "Author": "Sarah J. Maas", "Genre": "Fantasy", "Language": "English", "Start Date": '02-12-2024', "End Date": '02-12-2024', "Rating": 4, "Pages": 229}
     ]
-    jan_books = pd.DataFrame(jan_book_data)
-
-    feb_book_data = [
-            {"Month": "February", "Title": "A Court of Thorns and Roses", "Author": "Sarah J. Maas", "Genre": "Fantasy", "Language": "English", "Start Date": '01-28-2024', "End Date": '02-01-2024', "Rating": 4, "Pages": 419},
-            {"Month": "February", "Title": "Jujutsu Kaisen #11", "Author": "Gege Akutami", "Genre": "Fantasy", "Language": "Japanese", "Start Date": '02-04-2024', "End Date": '02-04-2024', "Rating": 5, "Pages": 192},
-            {"Month": "February", "Title": "A Court of Mist and Fury", "Author": "Sarah J. Maas", "Genre": "Fantasy", "Language": "English", "Start Date": '02-02-2024', "End Date": '02-07-2024', "Rating": 5, "Pages": 624},
-            {"Month": "February", "Title": "Naruto #1", "Author": "Masashi Kishimoto", "Genre": "Action", "Language": "Japanese", "Start Date": '02-07-2024', "End Date": '02-08-2024', "Rating": 5, "Pages": 187},
-            {"Month": "February", "Title": "A Court of Wings and Ruin", "Author": "Sarah J. Maas", "Genre": "Fantasy", "Language": "English", "Start Date": '02-08-2024', "End Date": '02-11-2024', "Rating": 5, "Pages": 699}
-    ]
-    feb_books = pd.DataFrame(feb_book_data)
 
 
     # all books
-    book_df = pd.concat([jan_books, feb_books], axis=0)
+    book_df = pd.DataFrame(book_data)
 
     selected_month, selected_genre, selected_author, pages = display_sidebar(book_df)
 
@@ -511,6 +507,36 @@ def main():
 
                 st.write("**Summary:** Feyre has returned to the Spring Court, determined to gather information on Tamlin’s maneuverings and the invading king threatening to bring Prythian to its knees. But to do so she must play a deadly game of deceit-and one slip may spell doom not only for Feyre, but for her world as well. As war bears down upon them all, Feyre must decide who to trust amongst the dazzling and lethal High Lords-and hunt for allies in unexpected places. In this thrilling third book in the #1 New York Times and USA Today bestselling series from Sarah J. Maas, the earth will be painted red as mighty armies grapple for power over the one thing that could destroy them all.")
                 st.write("**Thoughts:** In 'A Court of Wings and Ruin,' war, betrayals, and unexpected alliances dominated the narrative. I found it enjoyable (and sometimes frustrating) to read!")
+
+        page_result = get_pages("A Court of Frost and Starlight", book_df)
+        author_result = get_author("A Court of Frost and Starlight", book_df)
+        genre_result = get_genre("A Court of Frost and Starlight", book_df)
+
+        if (genre_result in selected_genre or not selected_genre) and (page_result <= pages) and (author_result in selected_author or not selected_author):
+            with st.expander("A Court of Frost and Starlight"):
+                col6, col7 = st.columns(2)
+
+                with col6:
+                    st.image("img/acofas_book.jpg", width=250)
+
+                with col7:
+                    st.write("**Title:** A Court of Frost and Starlight")
+
+                    st.write(f"**Author:** {author_result}")
+
+                    st.write(f"**Genre:** {genre_result}")
+
+                    language_result = get_language("A Court of Frost and Starlight", filtered_data)
+                    st.write(f"**Language:** {language_result}")
+
+                    st.write(f"**Number of Pages:** {page_result}")
+
+                    rating_result = get_rating("A Court of Frost and Starlight", filtered_data)
+                    st.write(f"**My Rating:** {rating_result}/5.0")
+
+                st.write("**Summary:** Feyre, Rhysand, and their friends are still busy rebuilding the Night Court and the vastly altered world beyond, recovering from the war that changed everything. But Winter Solstice is finally approaching, and with it, the joy of a hard-earned reprieve.  Yet even the festive atmosphere can't keep the shadows of the past from looming. As Feyre navigates her first Winter Solstice as High Lady, her concern for those dearest to her deepens. They have more wounds than she anticipated--scars that will have a far-reaching impact on the future of their court.")
+                st.write("**Thoughts:** This book (short and sweet) read almost like an epilogue as it delves into the months following the war, predominantly exuding feel-good vibes. However, the alternating use of first and third-person narratives felt somewhat jarring, and the storyline lacked the same level of plot and action found in the preceding books. Overall, it was cute, but definitely not my favorite from this series.")
+    
     
     
 
