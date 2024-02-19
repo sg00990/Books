@@ -226,7 +226,8 @@ def main():
         {"Month": "February", "Title": "A Court of Mist and Fury", "Author": "Sarah J. Maas", "Genre": "Fantasy", "Language": "English", "Start Date": '02-02-2024', "End Date": '02-07-2024', "Rating": 5, "Pages": 624},
         {"Month": "February", "Title": "Naruto #1", "Author": "Masashi Kishimoto", "Genre": "Action", "Language": "Japanese", "Start Date": '02-07-2024', "End Date": '02-08-2024', "Rating": 5, "Pages": 187},
         {"Month": "February", "Title": "A Court of Wings and Ruin", "Author": "Sarah J. Maas", "Genre": "Fantasy", "Language": "English", "Start Date": '02-08-2024', "End Date": '02-11-2024', "Rating": 5, "Pages": 699},
-        {"Month": "February", "Title": "A Court of Frost and Starlight", "Author": "Sarah J. Maas", "Genre": "Fantasy", "Language": "English", "Start Date": '02-12-2024', "End Date": '02-12-2024', "Rating": 4, "Pages": 229}
+        {"Month": "February", "Title": "A Court of Frost and Starlight", "Author": "Sarah J. Maas", "Genre": "Fantasy", "Language": "English", "Start Date": '02-12-2024', "End Date": '02-12-2024', "Rating": 4, "Pages": 229},
+        {"Month": "February", "Title": "A Court of Silver Flames", "Author": "Sarah J. Maas", "Genre": "Fantasy", "Language": "English", "Start Date": '02-13-2024', "End Date": '02-18-2024', "Rating": 4.5, "Pages": 751}
     ]
 
 
@@ -537,7 +538,35 @@ def main():
                 st.write("**Summary:** Feyre, Rhysand, and their friends are still busy rebuilding the Night Court and the vastly altered world beyond, recovering from the war that changed everything. But Winter Solstice is finally approaching, and with it, the joy of a hard-earned reprieve.  Yet even the festive atmosphere can't keep the shadows of the past from looming. As Feyre navigates her first Winter Solstice as High Lady, her concern for those dearest to her deepens. They have more wounds than she anticipated--scars that will have a far-reaching impact on the future of their court.")
                 st.write("**Thoughts:** This book (short and sweet) read almost like an epilogue as it delves into the months following the war, predominantly exuding feel-good vibes. However, the alternating use of first and third-person narratives felt somewhat jarring, and the storyline lacked the same level of plot and action found in the preceding books. Overall, it was cute, but definitely not my favorite from this series.")
     
-    
+        page_result = get_pages("A Court of Silver Flames", book_df)
+        author_result = get_author("A Court of Silver Flames", book_df)
+        genre_result = get_genre("A Court of Silver Flames", book_df)
+
+        if (genre_result in selected_genre or not selected_genre) and (page_result <= pages) and (author_result in selected_author or not selected_author):
+            with st.expander("A Court of Silver Flames"):
+                col6, col7 = st.columns(2)
+
+                with col6:
+                    st.image("img/acosf_book.jpg", width=250)
+
+                with col7:
+                    st.write("**Title:** A Court of Silver Flames")
+
+                    st.write(f"**Author:** {author_result}")
+
+                    st.write(f"**Genre:** {genre_result}")
+
+                    language_result = get_language("A Court of Silver Flames", filtered_data)
+                    st.write(f"**Language:** {language_result}")
+
+                    st.write(f"**Number of Pages:** {page_result}")
+
+                    rating_result = get_rating("A Court of Silver Flames", filtered_data)
+                    st.write(f"**My Rating:** {rating_result}/5.0")
+
+                st.write("**Summary:** Nesta Archeron has always been prickly—proud, swift to anger, and slow to forgive. And ever since being forced into the Cauldron and becoming High Fae against her will, she’s struggled to find a place for herself within the strange, deadly world she inhabits. Worse, she can’t seem to move past the horrors of the war with Hybern and all she lost in it. The one person who ignites her temper more than any other is Cassian, the battle-scarred warrior whose position in Rhysand and Feyre’s Night Court keeps him constantly in Nesta’s orbit. But her temper isn’t the only thing Cassian ignites. The fire between them is undeniable, and only burns hotter as they are forced into close quarters with each other. Meanwhile, the treacherous human queens who returned to the Continent during the last war have forged a dangerous new alliance, threatening the fragile peace that has settled over the realms. And the key to halting them might very well rely on Cassian and Nesta facing their haunting pasts. Against the sweeping backdrop of a world seared by war and plagued with uncertainty, Nesta and Cassian battle monsters from within and without as they search for acceptance—and healing—in each other’s arms")
+                st.write("**Thoughts:** Initially, I wasn't particularly enthusiastic about delving into a book centered around Nesta. However, this novel completely transformed my perspective, as Nesta evolved into one of my beloved characters. Witnessing her conquer the traumas of war, establish genuine friendships, and pioneer a female-exclusive warrior unit was incredibly empowering. Nevertheless, I couldn't overlook certain plot inconsistencies, which detracted from the overall experience for me (looking at you Reys and Feyre).")
+     
     
 
 if __name__ == '__main__':
