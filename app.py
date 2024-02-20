@@ -227,7 +227,8 @@ def main():
         {"Month": "February", "Title": "Naruto #1", "Author": "Masashi Kishimoto", "Genre": "Action", "Language": "Japanese", "Start Date": '02-07-2024', "End Date": '02-08-2024', "Rating": 5, "Pages": 187},
         {"Month": "February", "Title": "A Court of Wings and Ruin", "Author": "Sarah J. Maas", "Genre": "Fantasy", "Language": "English", "Start Date": '02-08-2024', "End Date": '02-11-2024', "Rating": 5, "Pages": 699},
         {"Month": "February", "Title": "A Court of Frost and Starlight", "Author": "Sarah J. Maas", "Genre": "Fantasy", "Language": "English", "Start Date": '02-12-2024', "End Date": '02-12-2024', "Rating": 4, "Pages": 229},
-        {"Month": "February", "Title": "A Court of Silver Flames", "Author": "Sarah J. Maas", "Genre": "Fantasy", "Language": "English", "Start Date": '02-13-2024', "End Date": '02-18-2024', "Rating": 4.5, "Pages": 751}
+        {"Month": "February", "Title": "A Court of Silver Flames", "Author": "Sarah J. Maas", "Genre": "Fantasy", "Language": "English", "Start Date": '02-13-2024', "End Date": '02-17-2024', "Rating": 4.5, "Pages": 751},
+        {"Month": "February", "Title": "Hunter x Hunter #1", "Author": "Yoshihito Togashi", "Genre": "Action", "Language": "Japanese", "Start Date": '02-18-2024', "End Date": '02-20-2024', "Rating": 5, "Pages": 183}
     ]
 
 
@@ -564,8 +565,38 @@ def main():
                     rating_result = get_rating("A Court of Silver Flames", filtered_data)
                     st.write(f"**My Rating:** {rating_result}/5.0")
 
-                st.write("**Summary:** Nesta Archeron has always been prickly—proud, swift to anger, and slow to forgive. And ever since being forced into the Cauldron and becoming High Fae against her will, she’s struggled to find a place for herself within the strange, deadly world she inhabits. Worse, she can’t seem to move past the horrors of the war with Hybern and all she lost in it. The one person who ignites her temper more than any other is Cassian, the battle-scarred warrior whose position in Rhysand and Feyre’s Night Court keeps him constantly in Nesta’s orbit. But her temper isn’t the only thing Cassian ignites. The fire between them is undeniable, and only burns hotter as they are forced into close quarters with each other. Meanwhile, the treacherous human queens who returned to the Continent during the last war have forged a dangerous new alliance, threatening the fragile peace that has settled over the realms. And the key to halting them might very well rely on Cassian and Nesta facing their haunting pasts. Against the sweeping backdrop of a world seared by war and plagued with uncertainty, Nesta and Cassian battle monsters from within and without as they search for acceptance—and healing—in each other’s arms")
+                st.write("**Summary:** Nesta Archeron has always been prickly—proud, swift to anger, and slow to forgive. And ever since being forced into the Cauldron and becoming High Fae against her will, she’s struggled to find a place for herself within the strange, deadly world she inhabits. Worse, she can’t seem to move past the horrors of the war with Hybern and all she lost in it. The one person who ignites her temper more than any other is Cassian, the battle-scarred warrior whose position in Rhysand and Feyre’s Night Court keeps him constantly in Nesta’s orbit. But her temper isn’t the only thing Cassian ignites. The fire between them is undeniable, and only burns hotter as they are forced into close quarters with each other. Meanwhile, the treacherous human queens who returned to the Continent during the last war have forged a dangerous new alliance, threatening the fragile peace that has settled over the realms. And the key to halting them might very well rely on Cassian and Nesta facing their haunting pasts. Against the sweeping backdrop of a world seared by war and plagued with uncertainty, Nesta and Cassian battle monsters from within and without as they search for acceptance—and healing—in each other’s arms.")
                 st.write("**Thoughts:** Initially, I wasn't particularly enthusiastic about delving into a book centered around Nesta. However, this novel completely transformed my perspective, as Nesta evolved into one of my beloved characters. Witnessing her conquer the traumas of war, establish genuine friendships, and pioneer a female-exclusive warrior unit was incredibly empowering. Nevertheless, I couldn't overlook certain plot inconsistencies, which detracted from the overall experience for me (looking at you Reys and Feyre).")
+
+        page_result = get_pages("Hunter x Hunter #1", book_df)
+        author_result = get_author("Hunter x Hunter #1", book_df)
+        genre_result = get_genre("Hunter x Hunter #1", book_df)
+
+        if (genre_result in selected_genre or not selected_genre) and (page_result <= pages) and (author_result in selected_author or not selected_author):
+            with st.expander("Hunter x Hunter #1"):
+                col6, col7 = st.columns(2)
+
+                with col6:
+                    st.image("img/hh_1.jpg", width=250)
+
+                with col7:
+                    st.write("**Title:** Hunter x Hunter #1")
+
+                    st.write(f"**Author:** {author_result}")
+
+                    st.write(f"**Genre:** {genre_result}")
+
+                    language_result = get_language("Hunter x Hunter #1", filtered_data)
+                    st.write(f"**Language:** {language_result}")
+
+                    st.write(f"**Number of Pages:** {page_result}")
+
+                    rating_result = get_rating("Hunter x Hunter #1", filtered_data)
+                    st.write(f"**My Rating:** {rating_result}/5.0")
+
+                st.write("**Summary:** Gon leaves home and befriends two other hunter hopefuls: the mysterious Kurapika, who is the last of [his] clan, and Leorio, who seems a superficial moneygrubber yet actually has a heart of gold. Together they solve riddles and overcome obstacles, but their journey is only beginning.")
+                st.write("**Thoughts:** Going into this, I figured it'd be an easy read given Gon's age of 12. However, I found it to be slightly more challenging compared to Naruto due to the lengthy explanations throughout the book. I was still able to grasp a general understanding of the story and enjoyed the manga regardless.")
+     
      
     
 
