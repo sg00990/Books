@@ -228,7 +228,8 @@ def main():
         {"Month": "February", "Title": "A Court of Wings and Ruin", "Author": "Sarah J. Maas", "Genre": "Fantasy", "Language": "English", "Start Date": '02-08-2024', "End Date": '02-11-2024', "Rating": 5, "Pages": 699},
         {"Month": "February", "Title": "A Court of Frost and Starlight", "Author": "Sarah J. Maas", "Genre": "Fantasy", "Language": "English", "Start Date": '02-12-2024', "End Date": '02-12-2024', "Rating": 4, "Pages": 229},
         {"Month": "February", "Title": "A Court of Silver Flames", "Author": "Sarah J. Maas", "Genre": "Fantasy", "Language": "English", "Start Date": '02-13-2024', "End Date": '02-17-2024', "Rating": 4.5, "Pages": 751},
-        {"Month": "February", "Title": "Hunter x Hunter #1", "Author": "Yoshihito Togashi", "Genre": "Action", "Language": "Japanese", "Start Date": '02-18-2024', "End Date": '02-20-2024', "Rating": 5, "Pages": 183}
+        {"Month": "February", "Title": "Hunter x Hunter #1", "Author": "Yoshihito Togashi", "Genre": "Action", "Language": "Japanese", "Start Date": '02-18-2024', "End Date": '02-20-2024', "Rating": 5, "Pages": 183},
+        {"Month": "February", "Title": "Haikyu!! #1", "Author": "Haruichi Furudate", "Genre": "Sports", "Language": "Japanese", "Start Date": '02-20-2024', "End Date": '02-22-2024', "Rating": 5, "Pages": 189}
     ]
 
 
@@ -597,6 +598,34 @@ def main():
                 st.write("**Summary:** Gon leaves home and befriends two other hunter hopefuls: the mysterious Kurapika, who is the last of [his] clan, and Leorio, who seems a superficial moneygrubber yet actually has a heart of gold. Together they solve riddles and overcome obstacles, but their journey is only beginning.")
                 st.write("**Thoughts:** Going into this, I figured it'd be an easy read given Gon's age of 12. However, I found it to be slightly more challenging compared to Naruto due to the lengthy explanations throughout the book. I was still able to grasp a general understanding of the story and enjoyed the manga regardless.")
      
+        page_result = get_pages("Haikyu!! #1", book_df)
+        author_result = get_author("Haikyu!! #1", book_df)
+        genre_result = get_genre("Haikyu!! #1", book_df)
+
+        if (genre_result in selected_genre or not selected_genre) and (page_result <= pages) and (author_result in selected_author or not selected_author):
+            with st.expander("Haikyu!! #1"):
+                col6, col7 = st.columns(2)
+
+                with col6:
+                    st.image("img/hh_1.jpg", width=250)
+
+                with col7:
+                    st.write("**Title:** Haikyu!! #1")
+
+                    st.write(f"**Author:** {author_result}")
+
+                    st.write(f"**Genre:** {genre_result}")
+
+                    language_result = get_language("Haikyu!! #1", filtered_data)
+                    st.write(f"**Language:** {language_result}")
+
+                    st.write(f"**Number of Pages:** {page_result}")
+
+                    rating_result = get_rating("Haikyu!! #1", filtered_data)
+                    st.write(f"**My Rating:** {rating_result}/5.0")
+
+                st.write("**Summary:** Shoyo Hinata is inspired by the Small Giant playing volleyball on TV. Three years later, Hinata goes to his first ever volleyball tournament and his team is paired against Kitagawa Daiichi, the school of Tobio Kageyama, also known as the King of the Court.")
+                st.write("**Thoughts:** Being a huge fan of sports anime, Haikyuu has always held a special place in my heart. When I stumbled upon the book at Kinokuniya, I couldn't resist adding it to my collection. I anticipated that its portrayal of real-life scenarios would make for a smoother read compared to series like Jujutsu Kaisen or Naruto, and my assumption was partially correct! Despite its abundant use of informal speech, the overall readability of the book was surprisingly good.")
      
     
 
