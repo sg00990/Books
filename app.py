@@ -607,7 +607,7 @@ def main():
                 col6, col7 = st.columns(2)
 
                 with col6:
-                    st.image("img/hh_1.jpg", width=250)
+                    st.image("img/haikyuu_1.jpg", width=250)
 
                 with col7:
                     st.write("**Title:** Haikyu!! #1")
