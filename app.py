@@ -229,7 +229,9 @@ def main():
         {"Month": "February", "Title": "A Court of Frost and Starlight", "Author": "Sarah J. Maas", "Genre": "Fantasy", "Language": "English", "Start Date": '02-12-2024', "End Date": '02-12-2024', "Rating": 4, "Pages": 229},
         {"Month": "February", "Title": "A Court of Silver Flames", "Author": "Sarah J. Maas", "Genre": "Fantasy", "Language": "English", "Start Date": '02-13-2024', "End Date": '02-17-2024', "Rating": 4.5, "Pages": 751},
         {"Month": "February", "Title": "Hunter x Hunter #1", "Author": "Yoshihito Togashi", "Genre": "Action", "Language": "Japanese", "Start Date": '02-18-2024', "End Date": '02-20-2024', "Rating": 5, "Pages": 183},
-        {"Month": "February", "Title": "Haikyu!! #1", "Author": "Haruichi Furudate", "Genre": "Sports", "Language": "Japanese", "Start Date": '02-20-2024', "End Date": '02-22-2024', "Rating": 5, "Pages": 189}
+        {"Month": "February", "Title": "Haikyu!! #1", "Author": "Haruichi Furudate", "Genre": "Sports", "Language": "Japanese", "Start Date": '02-20-2024', "End Date": '02-22-2024', "Rating": 5, "Pages": 189},
+        {"Month": "February", "Title": "Jujutsu Kaisen #12", "Author": "Gege Akutami", "Genre": "Fantasy", "Language": "Japanese", "Start Date": '02-23-2024', "End Date": '02-23-2024', "Rating": 5, "Pages": 189},
+        {"Month": "February", "Title": "Jujutsu Kaisen #13", "Author": "Gege Akutami", "Genre": "Fantasy", "Language": "Japanese", "Start Date": '02-24-2024', "End Date": '02-25-2024', "Rating": 5, "Pages": 191}
     ]
 
 
@@ -626,6 +628,65 @@ def main():
 
                 st.write("**Summary:** Shoyo Hinata is inspired by the Small Giant playing volleyball on TV. Three years later, Hinata goes to his first ever volleyball tournament and his team is paired against Kitagawa Daiichi, the school of Tobio Kageyama, also known as the King of the Court.")
                 st.write("**Thoughts:** Being a huge fan of sports anime, Haikyuu has always held a special place in my heart. When I stumbled upon the book at Kinokuniya, I couldn't resist adding it to my collection. I anticipated that its portrayal of real-life scenarios would make for a smoother read compared to series like Jujutsu Kaisen or Naruto, and my assumption was partially correct! Despite its abundant use of informal speech, the overall readability of the book was surprisingly good.")
+        
+        page_result = get_pages("Jujutsu Kaisen #12", book_df)
+        author_result = get_author("Jujutsu Kaisen #12", book_df)
+        genre_result = get_genre("Jujutsu Kaisen #12", book_df)
+
+        if (genre_result in selected_genre or not selected_genre) and (page_result <= pages) and (author_result in selected_author or not selected_author):
+            with st.expander("Jujutsu Kaisen #12"):
+                col6, col7 = st.columns(2)
+
+                with col6:
+                    st.image("img/jjk_12.jpg", width=250)
+
+                with col7:
+                    st.write("**Title:** Jujutsu Kaisen #12")
+
+                    st.write(f"**Author:** {author_result}")
+
+                    st.write(f"**Genre:** {genre_result}")
+
+                    language_result = get_language("Jujutsu Kaisen #12", filtered_data)
+                    st.write(f"**Language:** {language_result}")
+
+                    st.write(f"**Number of Pages:** {page_result}")
+
+                    rating_result = get_rating("Jujutsu Kaisen #12", filtered_data)
+                    st.write(f"**My Rating:** {rating_result}/5.0")
+
+                st.write("**Summary:** The incident in Shibuya becomes dire when Toji Zenin reappears! Meanwhile, Mei Mei confronts the traitorous Geto on a subway platform, and Nanami’s furious over the casualties suffered by the assistant managers. Then more grade 1 sorcerers enter the fray as Itadori fights the eldest Cursed Womb: Death Painting brother, Choso!")
+                st.write("**Thoughts:** In these upcoming volumes of the series, I found some of my personal favorites. The confrontation between Yuuji and Choso was wonderfully done, although I have a preference for experiencing it through animation. Additionally, Nanami emerged as another standout character within this volume.")
+        
+        page_result = get_pages("Jujutsu Kaisen #13", book_df)
+        author_result = get_author("Jujutsu Kaisen #13", book_df)
+        genre_result = get_genre("Jujutsu Kaisen #13", book_df)
+
+        if (genre_result in selected_genre or not selected_genre) and (page_result <= pages) and (author_result in selected_author or not selected_author):
+            with st.expander("Jujutsu Kaisen #13"):
+                col6, col7 = st.columns(2)
+
+                with col6:
+                    st.image("img/jjk_13.jpg", width=250)
+
+                with col7:
+                    st.write("**Title:** Jujutsu Kaisen #13")
+
+                    st.write(f"**Author:** {author_result}")
+
+                    st.write(f"**Genre:** {genre_result}")
+
+                    language_result = get_language("Jujutsu Kaisen #13", filtered_data)
+                    st.write(f"**Language:** {language_result}")
+
+                    st.write(f"**Number of Pages:** {page_result}")
+
+                    rating_result = get_rating("Jujutsu Kaisen #13", filtered_data)
+                    st.write(f"**My Rating:** {rating_result}/5.0")
+
+                st.write("**Summary:** Dagon has evolved into a terrifying curse, releasing a flood of endless cursed energy attacks at Naobito, Maki and Nanami! At the same time, a group of curse users devoted to Geto attempt to summon the jujutsu world’s most terrifying threat.")
+                st.write("**Thoughts:** In this volume, the story takes an intense turn, building upon the already established tension. With unexpected appearances like Toji and the chaotic events orchestrated by Jogo and Sukuna, this book delivers an exhilarating read.")
+     
      
     
 
