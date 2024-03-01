@@ -231,7 +231,8 @@ def main():
         {"Month": "February", "Title": "Hunter x Hunter #1", "Author": "Yoshihito Togashi", "Genre": "Action", "Language": "Japanese", "Start Date": '02-18-2024', "End Date": '02-20-2024', "Rating": 5, "Pages": 183},
         {"Month": "February", "Title": "Haikyu!! #1", "Author": "Haruichi Furudate", "Genre": "Sports", "Language": "Japanese", "Start Date": '02-20-2024', "End Date": '02-22-2024', "Rating": 5, "Pages": 189},
         {"Month": "February", "Title": "Jujutsu Kaisen #12", "Author": "Gege Akutami", "Genre": "Fantasy", "Language": "Japanese", "Start Date": '02-23-2024', "End Date": '02-23-2024', "Rating": 5, "Pages": 189},
-        {"Month": "February", "Title": "Jujutsu Kaisen #13", "Author": "Gege Akutami", "Genre": "Fantasy", "Language": "Japanese", "Start Date": '02-24-2024', "End Date": '02-25-2024', "Rating": 5, "Pages": 191}
+        {"Month": "February", "Title": "Jujutsu Kaisen #13", "Author": "Gege Akutami", "Genre": "Fantasy", "Language": "Japanese", "Start Date": '02-24-2024', "End Date": '02-25-2024', "Rating": 5, "Pages": 191},
+        {"Month": "February", "Title": "Jujutsu Kaisen #14", "Author": "Gege Akutami", "Genre": "Fantasy", "Language": "Japanese", "Start Date": '02-29-2024', "End Date": '02-29-2024', "Rating": 5, "Pages": 191}
     ]
 
 
@@ -686,7 +687,48 @@ def main():
 
                 st.write("**Summary:** Dagon has evolved into a terrifying curse, releasing a flood of endless cursed energy attacks at Naobito, Maki and Nanami! At the same time, a group of curse users devoted to Geto attempt to summon the jujutsu world’s most terrifying threat.")
                 st.write("**Thoughts:** In this volume, the story takes an intense turn, building upon the already established tension. With unexpected appearances like Toji and the chaotic events orchestrated by Jogo and Sukuna, this book delivers an exhilarating read.")
+
+        page_result = get_pages("Jujutsu Kaisen #14", book_df)
+        author_result = get_author("Jujutsu Kaisen #14", book_df)
+        genre_result = get_genre("Jujutsu Kaisen #14", book_df)
+
+        if (genre_result in selected_genre or not selected_genre) and (page_result <= pages) and (author_result in selected_author or not selected_author):
+            with st.expander("Jujutsu Kaisen #14"):
+                col6, col7 = st.columns(2)
+
+                with col6:
+                    st.image("img/jjk_14.jpg", width=250)
+
+                with col7:
+                    st.write("**Title:** Jujutsu Kaisen #14")
+
+                    st.write(f"**Author:** {author_result}")
+
+                    st.write(f"**Genre:** {genre_result}")
+
+                    language_result = get_language("Jujutsu Kaisen #14", filtered_data)
+                    st.write(f"**Language:** {language_result}")
+
+                    st.write(f"**Number of Pages:** {page_result}")
+
+                    rating_result = get_rating("Jujutsu Kaisen #14", filtered_data)
+                    st.write(f"**My Rating:** {rating_result}/5.0")
+
+                st.write("**Summary:** While Sukuna, who has been temporarily unleashed, is wrecking Shibuya, Fushiguro suffers a serious injury from a curse user who caught him unawares. Fushiguro comes up with a desperate plan to deal with both the rampaging Sukuna and the curse user, but it comes with grave consequences…")
+                st.write("**Thoughts:** Volume 14 was another wild read. The intense showdown between Sukuna and Jougo reaches its climax, Fushiguro faces relentless challenges, and Yuuji confronts the series' most hated villain. Amidst the action, the narrative doesn't shy away from impactful character deaths.")
      
+     
+    
+    elif selected_month == "March":
+        filtered_data = filter_data(book_df, 'Month', [selected_month])
+        filtered_data = filter_data(filtered_data, 'Genre', selected_genre)
+        filtered_data = filter_data(filtered_data, 'Author', selected_author)
+        filtered_data = filtered_data[filtered_data['Pages'] <= pages]
+        
+        try:
+            display_charts(selected_month, filtered_data)
+        except:
+            st.warning("No data to display")
      
     
 
