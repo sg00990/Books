@@ -232,7 +232,9 @@ def main():
         {"Month": "February", "Title": "Haikyu!! #1", "Author": "Haruichi Furudate", "Genre": "Sports", "Language": "Japanese", "Start Date": '02-20-2024', "End Date": '02-22-2024', "Rating": 5, "Pages": 189},
         {"Month": "February", "Title": "Jujutsu Kaisen #12", "Author": "Gege Akutami", "Genre": "Fantasy", "Language": "Japanese", "Start Date": '02-23-2024', "End Date": '02-23-2024', "Rating": 5, "Pages": 189},
         {"Month": "February", "Title": "Jujutsu Kaisen #13", "Author": "Gege Akutami", "Genre": "Fantasy", "Language": "Japanese", "Start Date": '02-24-2024', "End Date": '02-25-2024', "Rating": 5, "Pages": 191},
-        {"Month": "February", "Title": "Jujutsu Kaisen #14", "Author": "Gege Akutami", "Genre": "Fantasy", "Language": "Japanese", "Start Date": '02-29-2024', "End Date": '02-29-2024', "Rating": 5, "Pages": 191}
+        {"Month": "February", "Title": "Jujutsu Kaisen #14", "Author": "Gege Akutami", "Genre": "Fantasy", "Language": "Japanese", "Start Date": '02-29-2024', "End Date": '02-29-2024', "Rating": 5, "Pages": 191},
+        {"Month": "March", "Title": "Jujutsu Kaisen #15", "Author": "Gege Akutami", "Genre": "Fantasy", "Language": "Japanese", "Start Date": '03-02-2024', "End Date": '03-02-2024', "Rating": 5, "Pages": 191},
+        {"Month": "March", "Title": "Starter Villain", "Author": "John Scalzi", "Genre": "Science Fiction", "Language": "English", "Start Date": '03-03-2024', "End Date": '03-04-2024', "Rating": 5, "Pages": 268}
     ]
 
 
@@ -729,6 +731,67 @@ def main():
             display_charts(selected_month, filtered_data)
         except:
             st.warning("No data to display")
+
+        
+        page_result = get_pages("Jujutsu Kaisen #15", book_df)
+        author_result = get_author("Jujutsu Kaisen #15", book_df)
+        genre_result = get_genre("Jujutsu Kaisen #15", book_df)
+
+        if (genre_result in selected_genre or not selected_genre) and (page_result <= pages) and (author_result in selected_author or not selected_author):
+            with st.expander("Jujutsu Kaisen #15"):
+                col6, col7 = st.columns(2)
+
+                with col6:
+                    st.image("img/jjk_15.jpg", width=250)
+
+                with col7:
+                    st.write("**Title:** Jujutsu Kaisen #15")
+
+                    st.write(f"**Author:** {author_result}")
+
+                    st.write(f"**Genre:** {genre_result}")
+
+                    language_result = get_language("Jujutsu Kaisen #15", filtered_data)
+                    st.write(f"**Language:** {language_result}")
+
+                    st.write(f"**Number of Pages:** {page_result}")
+
+                    rating_result = get_rating("Jujutsu Kaisen #15", filtered_data)
+                    st.write(f"**My Rating:** {rating_result}/5.0")
+
+                st.write("**Summary:** Sukuna is on a murderous rampage. Meanwhile, invaluabe Jujutsu Sorcerers have been taken down, and even Kugisaki falls into Mahito's trap! Feeling the burden of his sins, Itadori finds it hard to keep going, but he rushes off to help Kugisaki anyway. Can he reach her in time?!")
+                st.write("**Thoughts:** This book delves into the finale of season 2 of the anime (well most of it anyway), featuring another character death, Itadori's return and an unexpected turn of events. Like all of these so far, I really enjoyed it! ")
+
+
+        page_result = get_pages("Starter Villain", book_df)
+        author_result = get_author("Starter Villain", book_df)
+        genre_result = get_genre("Starter Villain", book_df)
+
+        if (genre_result in selected_genre or not selected_genre) and (page_result <= pages) and (author_result in selected_author or not selected_author):
+            with st.expander("Starter Villain"):
+                col6, col7 = st.columns(2)
+
+                with col6:
+                    st.image("img/starter_villain_book.jpg", width=250)
+
+                with col7:
+                    st.write("**Title:** Starter Villain")
+
+                    st.write(f"**Author:** {author_result}")
+
+                    st.write(f"**Genre:** {genre_result}")
+
+                    language_result = get_language("Starter Villain", filtered_data)
+                    st.write(f"**Language:** {language_result}")
+
+                    st.write(f"**Number of Pages:** {page_result}")
+
+                    rating_result = get_rating("Starter Villain", filtered_data)
+                    st.write(f"**My Rating:** {rating_result}/5.0")
+
+                st.write("**Summary:** Inheriting your uncle's supervillain business is more complicated than you might think. Particularly when you discover who's running the place. Charlie's life is going nowhere fast. A divorced substitute teacher living with his cat in a house his siblings want to sell, all he wants is to open a pub downtown, if only the bank will approve his loan. Then his long-lost uncle Jake dies and leaves his supervillain business (complete with island volcano lair) to Charlie. But becoming a supervillain isn't all giant laser death rays and lava pits. Jake had enemies, and now they're coming after Charlie. His uncle might have been a stand-up, old-fashioned kind of villain, but these are the real thing: rich, soulless predators backed by multinational corporations and venture capital. It's up to Charlie to win the war his uncle started against a league of supervillains. But with unionized dolphins, hyper-intelligent talking spy cats, and a terrifying henchperson at his side, going bad is starting to look pretty good. In a dog-eat-dog world...be a cat.")
+                st.write("**Thoughts:** Starter Villain marks my return to Kindle reading after years, and it did not disappoint! From the adorable cat on the cover to the witty storyline filled with intelligent cats, unionized dolphins, and unexpected plot twists, it was a delightful and comedic read. ")
+
      
     
 
