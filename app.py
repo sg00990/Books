@@ -234,7 +234,8 @@ def main():
         {"Month": "February", "Title": "Jujutsu Kaisen #13", "Author": "Gege Akutami", "Genre": "Fantasy", "Language": "Japanese", "Start Date": '02-24-2024', "End Date": '02-25-2024', "Rating": 5, "Pages": 191},
         {"Month": "February", "Title": "Jujutsu Kaisen #14", "Author": "Gege Akutami", "Genre": "Fantasy", "Language": "Japanese", "Start Date": '02-29-2024', "End Date": '02-29-2024', "Rating": 5, "Pages": 191},
         {"Month": "March", "Title": "Jujutsu Kaisen #15", "Author": "Gege Akutami", "Genre": "Fantasy", "Language": "Japanese", "Start Date": '03-02-2024', "End Date": '03-02-2024', "Rating": 5, "Pages": 191},
-        {"Month": "March", "Title": "Starter Villain", "Author": "John Scalzi", "Genre": "Science Fiction", "Language": "English", "Start Date": '03-03-2024', "End Date": '03-04-2024', "Rating": 5, "Pages": 268}
+        {"Month": "March", "Title": "Starter Villain", "Author": "John Scalzi", "Genre": "Science Fiction", "Language": "English", "Start Date": '03-03-2024', "End Date": '03-04-2024', "Rating": 5, "Pages": 268},
+        {"Month": "March", "Title": "Throne in the Dark", "Author": "A.K. Caggiano", "Genre": "Fantasy", "Language": "English", "Start Date": '03-04-2024', "End Date": '03-07-2024', "Rating": 5, "Pages": 459}
     ]
 
 
@@ -792,7 +793,36 @@ def main():
                 st.write("**Summary:** Inheriting your uncle's supervillain business is more complicated than you might think. Particularly when you discover who's running the place. Charlie's life is going nowhere fast. A divorced substitute teacher living with his cat in a house his siblings want to sell, all he wants is to open a pub downtown, if only the bank will approve his loan. Then his long-lost uncle Jake dies and leaves his supervillain business (complete with island volcano lair) to Charlie. But becoming a supervillain isn't all giant laser death rays and lava pits. Jake had enemies, and now they're coming after Charlie. His uncle might have been a stand-up, old-fashioned kind of villain, but these are the real thing: rich, soulless predators backed by multinational corporations and venture capital. It's up to Charlie to win the war his uncle started against a league of supervillains. But with unionized dolphins, hyper-intelligent talking spy cats, and a terrifying henchperson at his side, going bad is starting to look pretty good. In a dog-eat-dog world...be a cat.")
                 st.write("**Thoughts:** Starter Villain marks my return to Kindle reading after years, and it did not disappoint! From the adorable cat on the cover to the witty storyline filled with intelligent cats, unionized dolphins, and unexpected plot twists, it was a delightful and comedic read. ")
 
-     
+
+        page_result = get_pages("Throne in the Dark", book_df)
+        author_result = get_author("Throne in the Dark", book_df)
+        genre_result = get_genre("Throne in the Dark", book_df)
+
+        if (genre_result in selected_genre or not selected_genre) and (page_result <= pages) and (author_result in selected_author or not selected_author):
+            with st.expander("Throne in the Dark"):
+                col6, col7 = st.columns(2)
+
+                with col6:
+                    st.image("img/titd_book.jpg", width=170)
+
+                with col7:
+                    st.write("**Title:** Throne in the Dark")
+
+                    st.write(f"**Author:** {author_result}")
+
+                    st.write(f"**Genre:** {genre_result}")
+
+                    language_result = get_language("Throne in the Dark", filtered_data)
+                    st.write(f"**Language:** {language_result}")
+
+                    st.write(f"**Number of Pages:** {page_result}")
+
+                    rating_result = get_rating("Throne in the Dark", filtered_data)
+                    st.write(f"**My Rating:** {rating_result}/5.0")
+
+                st.write("**Summary:** Dark lord, demon spawn, prophesied realm destroyer. With a demon for a father, Damien Maleficus Bloodthorne’s destiny could be nothing but nefarious, and with the completion of his most vicious spell, Damien is on the cusp of fulfilling the evil inevitability all of his dark machinations have led to. And then, her—bubbly, obnoxious, blonde. Harboring secrets of her own, a tiny yet troublesome thief calling herself Amma completely upsets Damien’s malevolent plans when she mistakenly gets chained to his side through magic, forcing him to drag her across the realm. Killing her would fix things, of course, but the nauseatingly sweet Amma proves herself useful on Damien's unholy crusade and then proves herself the source of something even more sinister: feelings. Will Damien be forced to abandon his villainous birthright to help the tender thorn in his side? Or will he manage to overcome the virtue Amma insists on inspiring and instead cut it out at the heart?")
+                st.write("**Thoughts:** After coming across recommendations for Throne in the Dark on Reddit and noticing its positive reviews and affordable price of \$4 (seriously, why are books \$20+ now??), I decided to give it a try. I'm pleased to say I thoroughly enjoyed it! Filled with adventure, humor, and a delightful slow-burn romance, I can't wait to dive into the sequel.")
+
     
 
 if __name__ == '__main__':
