@@ -235,7 +235,10 @@ def main():
         {"Month": "February", "Title": "Jujutsu Kaisen #14", "Author": "Gege Akutami", "Genre": "Fantasy", "Language": "Japanese", "Start Date": '02-29-2024', "End Date": '02-29-2024', "Rating": 5, "Pages": 191},
         {"Month": "March", "Title": "Jujutsu Kaisen #15", "Author": "Gege Akutami", "Genre": "Fantasy", "Language": "Japanese", "Start Date": '03-02-2024', "End Date": '03-02-2024', "Rating": 5, "Pages": 191},
         {"Month": "March", "Title": "Starter Villain", "Author": "John Scalzi", "Genre": "Science Fiction", "Language": "English", "Start Date": '03-03-2024', "End Date": '03-04-2024', "Rating": 5, "Pages": 268},
-        {"Month": "March", "Title": "Throne in the Dark", "Author": "A.K. Caggiano", "Genre": "Fantasy", "Language": "English", "Start Date": '03-04-2024', "End Date": '03-07-2024', "Rating": 5, "Pages": 459}
+        {"Month": "March", "Title": "Throne in the Dark", "Author": "A.K. Caggiano", "Genre": "Fantasy", "Language": "English", "Start Date": '03-04-2024', "End Date": '03-07-2024', "Rating": 5, "Pages": 459},
+        {"Month": "March", "Title": "Summoned to the Wilds", "Author": "A.K. Caggiano", "Genre": "Fantasy", "Language": "English", "Start Date": '03-07-2024', "End Date": '03-10-2024', "Rating": 5, "Pages": 426},
+        {"Month": "March", "Title": "Jujutsu Kaisen #16", "Author": "Gege Akutami", "Genre": "Fantasy", "Language": "Japanese", "Start Date": '03-11-2024', "End Date": '03-11-2024', "Rating": 5, "Pages": 191},
+        {"Month": "March", "Title": "Jujutsu Kaisen #17", "Author": "Gege Akutami", "Genre": "Fantasy", "Language": "Japanese", "Start Date": '03-11-2024', "End Date": '03-11-2024', "Rating": 5, "Pages": 191}
     ]
 
 
@@ -803,7 +806,7 @@ def main():
                 col6, col7 = st.columns(2)
 
                 with col6:
-                    st.image("img/titd_book.jpg", width=170)
+                    st.image("img/titd_book.jpg", width=250)
 
                 with col7:
                     st.write("**Title:** Throne in the Dark")
@@ -822,6 +825,95 @@ def main():
 
                 st.write("**Summary:** Dark lord, demon spawn, prophesied realm destroyer. With a demon for a father, Damien Maleficus Bloodthorne’s destiny could be nothing but nefarious, and with the completion of his most vicious spell, Damien is on the cusp of fulfilling the evil inevitability all of his dark machinations have led to. And then, her—bubbly, obnoxious, blonde. Harboring secrets of her own, a tiny yet troublesome thief calling herself Amma completely upsets Damien’s malevolent plans when she mistakenly gets chained to his side through magic, forcing him to drag her across the realm. Killing her would fix things, of course, but the nauseatingly sweet Amma proves herself useful on Damien's unholy crusade and then proves herself the source of something even more sinister: feelings. Will Damien be forced to abandon his villainous birthright to help the tender thorn in his side? Or will he manage to overcome the virtue Amma insists on inspiring and instead cut it out at the heart?")
                 st.write("**Thoughts:** After coming across recommendations for Throne in the Dark on Reddit and noticing its positive reviews and affordable price of \$4 (seriously, why are books \$20+ now??), I decided to give it a try. I'm pleased to say I thoroughly enjoyed it! Filled with adventure, humor, and a delightful slow-burn romance, I can't wait to dive into the sequel.")
+
+
+        page_result = get_pages("Summoned to the Wilds", book_df)
+        author_result = get_author("Summoned to the Wilds", book_df)
+        genre_result = get_genre("Summoned to the Wilds", book_df)
+
+        if (genre_result in selected_genre or not selected_genre) and (page_result <= pages) and (author_result in selected_author or not selected_author):
+            with st.expander("Summoned to the Wilds"):
+                col6, col7 = st.columns(2)
+
+                with col6:
+                    st.image("img/sttw_book.jpg", width=250)
+
+                with col7:
+                    st.write("**Title:** Summoned to the Wilds")
+
+                    st.write(f"**Author:** {author_result}")
+
+                    st.write(f"**Genre:** {genre_result}")
+
+                    language_result = get_language("Summoned to the Wilds", filtered_data)
+                    st.write(f"**Language:** {language_result}")
+
+                    st.write(f"**Number of Pages:** {page_result}")
+
+                    rating_result = get_rating("Summoned to the Wilds", filtered_data)
+                    st.write(f"**My Rating:** {rating_result}/5.0")
+
+                st.write("**Summary:** Lady Ammalie Avington, Baroness of Faebarrow, has discovered the truth, and it should not come as a surprise: the blood mage who threatened, spellbound, and abducted her intends to bring ruin to the realm--the very one she is sworn to serve. It's just a terribly inconvenient fact to learn because, well...he's rather cute. But it's not safe to pine after the son of a demon, especially not whilst locked up in a tower surrounded by infernal beings and a rival for your affection, nor trapped below ground in a den of beguiling vampires, nor even in the heart of a wild jungle under the tutelage of esoteric witches. Amma just can't help herself around Damien Maleficus Bloodthorne, danger be damned, but, truly, what danger is there? Damien's heart, the one he swears to not have, has been softening right before her eyes. Nevermind the weird smoke that sometimes unwittingly emanates from his hands or that faraway look he gets to his eyes, and a voice she can't hear telling him that he's meant to be a vessel? Surely it's all just a bad dream. After finally tasting freedom and learning that Amma may have ancient, innate magical powers of her own, why not use them to do exactly as she pleases?")
+                st.write("**Thoughts:** This was a great book full of plot twists and humor! Damien continued to get derailed from his main mission (world domination, of course) while Amma finally discovered her magic. It did end on a cliffhanger, so I am excited to read the final book.")
+
+        page_result = get_pages("Jujutsu Kaisen #16", book_df)
+        author_result = get_author("Jujutsu Kaisen #16", book_df)
+        genre_result = get_genre("Jujutsu Kaisen #16", book_df)
+
+        if (genre_result in selected_genre or not selected_genre) and (page_result <= pages) and (author_result in selected_author or not selected_author):
+            with st.expander("Jujutsu Kaisen #16"):
+                col6, col7 = st.columns(2)
+
+                with col6:
+                    st.image("img/jjk_16.jpg", width=250)
+
+                with col7:
+                    st.write("**Title:** Jujutsu Kaisen #16")
+
+                    st.write(f"**Author:** {author_result}")
+
+                    st.write(f"**Genre:** {genre_result}")
+
+                    language_result = get_language("Jujutsu Kaisen #16", filtered_data)
+                    st.write(f"**Language:** {language_result}")
+
+                    st.write(f"**Number of Pages:** {page_result}")
+
+                    rating_result = get_rating("Jujutsu Kaisen #16", filtered_data)
+                    st.write(f"**My Rating:** {rating_result}/5.0")
+
+                st.write("**Summary:** After he consumes Mahito’s soul, Geto reveals part of his nefarious plan to Itadori and gang. In that moment, Choso recognizes the evil sorcerer possessing Geto's body and is filled with rage! Who is this evil sorcerer, and what relation do they have to Choso? Meanwhile, now that Gojo is imprisoned and the foundations of the jujutsu society are crumbling, what will happen to the world as it devolves into destruction and chaos?!")
+                st.write("**Thoughts:** This volume marks the conclusion of season 2's finale, so I am finally on to the new stuff! I enjoyed seeing Choso and Yuuji as a team (though it didn't last long) and while I knew of Yuuta's true role in this volume, I was still excited by his appearance. ")
+
+
+        page_result = get_pages("Jujutsu Kaisen #17", book_df)
+        author_result = get_author("Jujutsu Kaisen #17", book_df)
+        genre_result = get_genre("Jujutsu Kaisen #17", book_df)
+
+        if (genre_result in selected_genre or not selected_genre) and (page_result <= pages) and (author_result in selected_author or not selected_author):
+            with st.expander("Jujutsu Kaisen #17"):
+                col6, col7 = st.columns(2)
+
+                with col6:
+                    st.image("img/jjk_17.jpg", width=250)
+
+                with col7:
+                    st.write("**Title:** Jujutsu Kaisen #17")
+
+                    st.write(f"**Author:** {author_result}")
+
+                    st.write(f"**Genre:** {genre_result}")
+
+                    language_result = get_language("Jujutsu Kaisen #17", filtered_data)
+                    st.write(f"**Language:** {language_result}")
+
+                    st.write(f"**Number of Pages:** {page_result}")
+
+                    rating_result = get_rating("Jujutsu Kaisen #17", filtered_data)
+                    st.write(f"**My Rating:** {rating_result}/5.0")
+
+                st.write("**Summary:** Hunted down by Okkotsu and on the brink of death, Itadori recalls a troubling family scene from his past. But why is the former form of Noritoshi Kamo there? As the sorcerers begin to take action toward suppressing the lethal culling game, Maki pays the Zenin Clan a visit…")
+                st.write("**Thoughts:** This volume was by far the most difficult to read as it was super wordy; I think I got the gist of things though. Yuuji remembers Kenjaku's role in his past, the sorcerers confront Tengen and best of all, Maki destroys the Zenin clan. It was truly action-packed! ")
 
     
 
