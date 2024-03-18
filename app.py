@@ -238,7 +238,8 @@ def main():
         {"Month": "March", "Title": "Throne in the Dark", "Author": "A.K. Caggiano", "Genre": "Fantasy", "Language": "English", "Start Date": '03-04-2024', "End Date": '03-07-2024', "Rating": 5, "Pages": 459},
         {"Month": "March", "Title": "Summoned to the Wilds", "Author": "A.K. Caggiano", "Genre": "Fantasy", "Language": "English", "Start Date": '03-07-2024', "End Date": '03-10-2024', "Rating": 5, "Pages": 426},
         {"Month": "March", "Title": "Jujutsu Kaisen #16", "Author": "Gege Akutami", "Genre": "Fantasy", "Language": "Japanese", "Start Date": '03-11-2024', "End Date": '03-11-2024', "Rating": 5, "Pages": 191},
-        {"Month": "March", "Title": "Jujutsu Kaisen #17", "Author": "Gege Akutami", "Genre": "Fantasy", "Language": "Japanese", "Start Date": '03-11-2024', "End Date": '03-11-2024', "Rating": 5, "Pages": 191}
+        {"Month": "March", "Title": "Jujutsu Kaisen #17", "Author": "Gege Akutami", "Genre": "Fantasy", "Language": "Japanese", "Start Date": '03-11-2024', "End Date": '03-11-2024', "Rating": 5, "Pages": 191},
+        {"Month": "March", "Title": "Eclipse of the Crown", "Author": "A.K. Caggiano", "Genre": "Fantasy", "Language": "English", "Start Date": '03-13-2024', "End Date": '03-17-2024', "Rating": 5, "Pages": 464},
     ]
 
 
@@ -914,6 +915,35 @@ def main():
 
                 st.write("**Summary:** Hunted down by Okkotsu and on the brink of death, Itadori recalls a troubling family scene from his past. But why is the former form of Noritoshi Kamo there? As the sorcerers begin to take action toward suppressing the lethal culling game, Maki pays the Zenin Clan a visit…")
                 st.write("**Thoughts:** This volume was by far the most difficult to read as it was super wordy; I think I got the gist of things though. Yuuji remembers Kenjaku's role in his past, the sorcerers confront Tengen and best of all, Maki destroys the Zenin clan. It was truly action-packed! ")
+
+        page_result = get_pages("Eclipse of the Crown", book_df)
+        author_result = get_author("Eclipse of the Crown", book_df)
+        genre_result = get_genre("Eclipse of the Crown", book_df)
+
+        if (genre_result in selected_genre or not selected_genre) and (page_result <= pages) and (author_result in selected_author or not selected_author):
+            with st.expander("Eclipse of the Crown"):
+                col6, col7 = st.columns(2)
+
+                with col6:
+                    st.image("img/eofc.jpg", width=250)
+
+                with col7:
+                    st.write("**Title:** Eclipse of the Crown")
+
+                    st.write(f"**Author:** {author_result}")
+
+                    st.write(f"**Genre:** {genre_result}")
+
+                    language_result = get_language("Eclipse of the Crown", filtered_data)
+                    st.write(f"**Language:** {language_result}")
+
+                    st.write(f"**Number of Pages:** {page_result}")
+
+                    rating_result = get_rating("Eclipse of the Crown", filtered_data)
+                    st.write(f"**My Rating:** {rating_result}/5.0")
+
+                st.write("**Summary:** Their destinies are irrevocably entangled, but will their bond be the realm’s undoing? Damien and Amma have landed themselves in the midst of Yvlcon, the preeminent congregation of the vilest and most unscrupulous villains in existence. Once again amongst his peers, Damien’s moral growth is threatened just when he’s learning to be slightly less evil. Consequently, Amma finds her own virtue in peril when faced with so much temptation, namely in the form of a domineering blood mage she can’t—or doesn’t want—to say no to. But a burgeoning romance is doused in the coldest of baths when the Grand Order of Dread commands Damien to once again face the swirling vortex of entropy that’s been hunting them all over the realm. The coming eclipse points to devastation and destruction, and there seems to be no avoiding annihilation, prophecy being, well, prophecy, after all. But there’s an entire fortnight before the world is supposed to end, and surely that’s enough time to find some way around it, or to at least confess one’s devotion to the other before it all burns down around them.")
+                st.write("**Thoughts:**  Eclipse of the Crown was an amazing conclusion to the trilogy! What initially appeared as side quests in previous books seamlessly converged in this installment—bringing together friends, foes, and more. I really enjoyed the romcom elements and humor. Additionally, the book concludes with a heartwarming happy ending.")
 
     
 
