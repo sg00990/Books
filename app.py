@@ -241,6 +241,7 @@ def main():
         {"Month": "March", "Title": "Jujutsu Kaisen #17", "Author": "Gege Akutami", "Genre": "Fantasy", "Language": "Japanese", "Start Date": '03-11-2024', "End Date": '03-11-2024', "Rating": 5, "Pages": 191},
         {"Month": "March", "Title": "Eclipse of the Crown", "Author": "A.K. Caggiano", "Genre": "Fantasy", "Language": "English", "Start Date": '03-13-2024', "End Date": '03-17-2024', "Rating": 5, "Pages": 464},
         {"Month": "March", "Title": "JoJo's Bizarre Adventure: Part 1 #1", "Author": "Hirohiko Araki", "Genre": "Action", "Language": "Japanese", "Start Date": '03-26-2024', "End Date": '03-28-2024', "Rating": 5, "Pages": 187},
+        {"Month": "April", "Title": "Demon Slayer #1", "Author": "Koyoharu Gotouge", "Genre": "Fantasy", "Language": "Japanese", "Start Date": '04-16-2024', "End Date": '04-20-2024', "Rating": 4, "Pages": 192},
     ]
 
 
@@ -976,6 +977,47 @@ def main():
                 st.write("**Summary:** Young Jonathan Joestar’s life is forever changed when he meets his new adopted brother, Dio. For some reason, Dio has a smoldering grudge against him and derives pleasure from seeing him suffer. But every man has his limits, as Dio finds out. This is the beginning of a long and hateful relationship!")
                 st.write("**Thoughts:**  I may be biased since JoJo's Bizarre Adventure is my all-time favorite anime, but I really enjoyed reading this first volume in Japanese. Though it starts out fairly normal (nothing supernatural...yet), there were plenty of plot twists and epic rivalries. It was also cool to see the artistic differences since this volume is from the 80s.")
 
+
+    elif selected_month == "April":
+        filtered_data = filter_data(book_df, 'Month', [selected_month])
+        filtered_data = filter_data(filtered_data, 'Genre', selected_genre)
+        filtered_data = filter_data(filtered_data, 'Author', selected_author)
+        filtered_data = filtered_data[filtered_data['Pages'] <= pages]
+        
+        try:
+            display_charts(selected_month, filtered_data)
+        except:
+            st.warning("No data to display")
+
+        
+        page_result = get_pages("Demon Slayer #1", book_df)
+        author_result = get_author("Demon Slayer #1", book_df)
+        genre_result = get_genre("Demon Slayer #1", book_df)
+
+        if (genre_result in selected_genre or not selected_genre) and (page_result <= pages) and (author_result in selected_author or not selected_author):
+            with st.expander("Demon Slayer #1"):
+                col6, col7 = st.columns(2)
+
+                with col6:
+                    st.image("img/ds_1.jpg", width=250)
+
+                with col7:
+                    st.write("**Title:** Demon Slayer #1")
+
+                    st.write(f"**Author:** {author_result}")
+
+                    st.write(f"**Genre:** {genre_result}")
+
+                    language_result = get_language("Demon Slayer #1", filtered_data)
+                    st.write(f"**Language:** {language_result}")
+
+                    st.write(f"**Number of Pages:** {page_result}")
+
+                    rating_result = get_rating("Demon Slayer #1", filtered_data)
+                    st.write(f"**My Rating:** {rating_result}/5.0")
+
+                st.write("**Summary:** Tanjiro sets out on the path of the Demon Slayer to save his sister and avenge his family! In Taisho-era Japan, kindhearted Tanjiro Kamado makes a living selling charcoal. But his peaceful life is shattered when a demon slaughters his entire family.")
+                st.write("**Thoughts:** The first volume of Demon Slayer is another book I bought while in Japan. I was actually able to get past the first 20 or so pages without using a dictionary! I enjoyed this volume, but it's not my favorite. It took me a bit longer to get through.")
     
 
 if __name__ == '__main__':
