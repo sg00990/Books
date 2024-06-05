@@ -1021,8 +1021,8 @@ def main():
                 st.write("**Thoughts:** The first volume of Demon Slayer is another book I bought while in Japan. I was actually able to get past the first 20 or so pages without using a dictionary! I enjoyed this volume, but it's not my favorite. It took me a bit longer to get through.")
     
 
-        elif selected_month == "May":
-            st.write("I was busy preparing and moving to an apartment, so no time for books...")
+    elif selected_month == "May":
+        st.write("I was busy preparing and moving to an apartment, so no time for books...")
 
 
 if __name__ == '__main__':
