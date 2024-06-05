@@ -242,6 +242,7 @@ def main():
         {"Month": "March", "Title": "Eclipse of the Crown", "Author": "A.K. Caggiano", "Genre": "Fantasy", "Language": "English", "Start Date": '03-13-2024', "End Date": '03-17-2024', "Rating": 5, "Pages": 464},
         {"Month": "March", "Title": "JoJo's Bizarre Adventure: Part 1 #1", "Author": "Hirohiko Araki", "Genre": "Action", "Language": "Japanese", "Start Date": '03-26-2024', "End Date": '03-28-2024', "Rating": 5, "Pages": 187},
         {"Month": "April", "Title": "Demon Slayer #1", "Author": "Koyoharu Gotouge", "Genre": "Fantasy", "Language": "Japanese", "Start Date": '04-16-2024', "End Date": '04-20-2024', "Rating": 4, "Pages": 192},
+        {"Month": "April", "Title": "Harry Potter and the Sorcerer's Stone", "Author": "J.K. Rowling", "Genre": "Fantasy", "Language": "Japanese", "Start Date": '04-20-2024', "End Date": '05-20-2024', "Rating": 5, "Pages": 483},
     ]
 
 
@@ -1019,6 +1020,10 @@ def main():
                 st.write("**Summary:** Tanjiro sets out on the path of the Demon Slayer to save his sister and avenge his family! In Taisho-era Japan, kindhearted Tanjiro Kamado makes a living selling charcoal. But his peaceful life is shattered when a demon slaughters his entire family.")
                 st.write("**Thoughts:** The first volume of Demon Slayer is another book I bought while in Japan. I was actually able to get past the first 20 or so pages without using a dictionary! I enjoyed this volume, but it's not my favorite. It took me a bit longer to get through.")
     
+
+        elif selected_month == "May":
+            st.write("I was busy preparing and moving to an apartment, so no time for books...")
+
 
 if __name__ == '__main__':
     main()
