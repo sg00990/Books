@@ -242,7 +242,9 @@ def main():
         {"Month": "March", "Title": "Eclipse of the Crown", "Author": "A.K. Caggiano", "Genre": "Fantasy", "Language": "English", "Start Date": '03-13-2024', "End Date": '03-17-2024', "Rating": 5, "Pages": 464},
         {"Month": "March", "Title": "JoJo's Bizarre Adventure: Part 1 #1", "Author": "Hirohiko Araki", "Genre": "Action", "Language": "Japanese", "Start Date": '03-26-2024', "End Date": '03-28-2024', "Rating": 5, "Pages": 187},
         {"Month": "April", "Title": "Demon Slayer #1", "Author": "Koyoharu Gotouge", "Genre": "Fantasy", "Language": "Japanese", "Start Date": '04-16-2024', "End Date": '04-20-2024', "Rating": 4, "Pages": 192},
-        {"Month": "April", "Title": "Harry Potter and the Sorcerer's Stone", "Author": "J.K. Rowling", "Genre": "Fantasy", "Language": "Japanese", "Start Date": '04-20-2024', "End Date": '05-20-2024', "Rating": 5, "Pages": 483},
+        #{"Month": "April", "Title": "Harry Potter and the Sorcerer's Stone", "Author": "J.K. Rowling", "Genre": "Fantasy", "Language": "Japanese", "Start Date": '04-20-2024', "End Date": '05-20-2024', "Rating": 5, "Pages": 483},
+        {"Month": "June", "Title": "Carry On", "Author": "Rainbow Rowell", "Genre": "Fantasy", "Language": "English", "Start Date": '06-15-2024', "End Date": '06-20-2024', "Rating": 5, "Pages": 517},
+   
     ]
 
 
@@ -1023,6 +1025,48 @@ def main():
 
     elif selected_month == "May":
         st.write("I was busy preparing and moving to an apartment, so no time for books...")
+
+    elif selected_month == "June":
+        filtered_data = filter_data(book_df, 'Month', [selected_month])
+        filtered_data = filter_data(filtered_data, 'Genre', selected_genre)
+        filtered_data = filter_data(filtered_data, 'Author', selected_author)
+        filtered_data = filtered_data[filtered_data['Pages'] <= pages]
+        
+        try:
+            display_charts(selected_month, filtered_data)
+        except:
+            st.warning("No data to display")
+
+        
+        page_result = get_pages("Carry On", book_df)
+        author_result = get_author("Carry On", book_df)
+        genre_result = get_genre("Carry On", book_df)
+
+        if (genre_result in selected_genre or not selected_genre) and (page_result <= pages) and (author_result in selected_author or not selected_author):
+            with st.expander("Carry On"):
+                col6, col7 = st.columns(2)
+
+                with col6:
+                    st.image("img/co_book.jpg", width=225)
+
+                with col7:
+                    st.write("**Title:** Carry On")
+
+                    st.write(f"**Author:** {author_result}")
+
+                    st.write(f"**Genre:** {genre_result}")
+
+                    language_result = get_language("Carry On", filtered_data)
+                    st.write(f"**Language:** {language_result}")
+
+                    st.write(f"**Number of Pages:** {page_result}")
+
+                    rating_result = get_rating("Carry On", filtered_data)
+                    st.write(f"**My Rating:** {rating_result}/5.0")
+
+                st.write("""**Summary:** Simon Snow is the worst Chosen One who's ever been chosen. That's what his roommate, Baz, says. And Baz might be evil and a vampire and a complete git, but he's probably right. Half the time, Simon can't even make his wand work, and the other half, he starts something on fire. His mentor's avoiding him, his girlfriend broke up with him, and there's a magic-eating monster running around, wearing Simon's face. Baz would be having a field day with all this, if he were here — it's their last year at the Watford School of Magicks, and Simon's infuriating nemesis didn't even bother to show up.""")
+                st.write("""**Thoughts:** Life has been pretty hectic lately with moving to a new apartment and my grandpa's passing, so I haven’t had much time for reading. However, I decided to pick up "Carry On" again because it’s such an easy and enjoyable read (and perfect for Pride Month!). "Carry On" is a spinoff from the book "Fangirl," both of which I last read in high school. It's like a modern twist on Harry Potter, with its own unique spins and charm. If you’re looking for something fun and magical, this book is a great pick!""")
+    
 
 
 if __name__ == '__main__':
