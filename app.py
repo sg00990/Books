@@ -244,7 +244,7 @@ def main():
         {"Month": "April", "Title": "Demon Slayer #1", "Author": "Koyoharu Gotouge", "Genre": "Fantasy", "Language": "Japanese", "Start Date": '04-16-2024', "End Date": '04-20-2024', "Rating": 4, "Pages": 192},
         #{"Month": "April", "Title": "Harry Potter and the Sorcerer's Stone", "Author": "J.K. Rowling", "Genre": "Fantasy", "Language": "Japanese", "Start Date": '04-20-2024', "End Date": '05-20-2024', "Rating": 5, "Pages": 483},
         {"Month": "June", "Title": "Carry On", "Author": "Rainbow Rowell", "Genre": "Fantasy", "Language": "English", "Start Date": '06-15-2024', "End Date": '06-20-2024', "Rating": 5, "Pages": 517},
-   
+        {"Month": "July", "Title": "Wayward Son", "Author": "Rainbow Rowell", "Genre": "Fantasy", "Language": "English", "Start Date": '07-14-2024', "End Date": '07-17-2024', "Rating": 5, "Pages": 354},
     ]
 
 
@@ -1067,7 +1067,47 @@ def main():
                 st.write("""**Summary:** Simon Snow is the worst Chosen One who's ever been chosen. That's what his roommate, Baz, says. And Baz might be evil and a vampire and a complete git, but he's probably right. Half the time, Simon can't even make his wand work, and the other half, he starts something on fire. His mentor's avoiding him, his girlfriend broke up with him, and there's a magic-eating monster running around, wearing Simon's face. Baz would be having a field day with all this, if he were here — it's their last year at the Watford School of Magicks, and Simon's infuriating nemesis didn't even bother to show up.""")
                 st.write("""**Thoughts:** Life has been pretty hectic lately with moving to a new apartment and my grandpa's passing, so I haven’t had much time for reading. However, I decided to pick up "Carry On" again because it’s such an easy and enjoyable read (and perfect for Pride Month!). "Carry On" is a spinoff from the book "Fangirl," both of which I last read in high school. It's like a modern twist on Harry Potter, with its own unique spins and charm. If you’re looking for something fun and magical, this book is a great pick!""")
     
+    elif selected_month == "July":
+        filtered_data = filter_data(book_df, 'Month', [selected_month])
+        filtered_data = filter_data(filtered_data, 'Genre', selected_genre)
+        filtered_data = filter_data(filtered_data, 'Author', selected_author)
+        filtered_data = filtered_data[filtered_data['Pages'] <= pages]
+        
+        try:
+            display_charts(selected_month, filtered_data)
+        except:
+            st.warning("No data to display")
 
+        
+        page_result = get_pages("Wayward Son", book_df)
+        author_result = get_author("Wayward Son", book_df)
+        genre_result = get_genre("Wayward Son", book_df)
+
+        if (genre_result in selected_genre or not selected_genre) and (page_result <= pages) and (author_result in selected_author or not selected_author):
+            with st.expander("Wayward Son"):
+                col6, col7 = st.columns(2)
+
+                with col6:
+                    st.image("img/ws_book.jpg", width=225)
+
+                with col7:
+                    st.write("**Title:** Wayward Son")
+
+                    st.write(f"**Author:** {author_result}")
+
+                    st.write(f"**Genre:** {genre_result}")
+
+                    language_result = get_language("Wayward Son", filtered_data)
+                    st.write(f"**Language:** {language_result}")
+
+                    st.write(f"**Number of Pages:** {page_result}")
+
+                    rating_result = get_rating("Wayward Son", filtered_data)
+                    st.write(f"**My Rating:** {rating_result}/5.0")
+
+                st.write("""**Summary:** The story is supposed to be over. Simon Snow did everything he was supposed to do. He beat the villain. He won the war. He even fell in love. Now comes the good part, right? Now comes the happily ever after… So why can’t Simon Snow get off the couch? What he needs, according to his best friend, is a change of scenery. He just needs to see himself in a new light… That’s how Simon and Penny and Baz end up in a vintage convertible, tearing across the American West. They find trouble, of course. (Dragons, vampires, skunk-headed things with shotguns.) And they get lost. They get so lost, they start to wonder whether they ever knew where they were headed in the first place…""")
+                st.write("""**Thoughts:** Between first reading Carry On in high school and rereading it last month, what was once a single book has now become a trilogy. Wayward Son is a fantastic sequel, continuing the adventures of Simon and his friends after Simon loses his magic. I thoroughly enjoyed the hilarious quips about America, especially the commentary on the outrageous gun laws (😂). One of my favorite quotes is, "Go ahead and shoot me. This isn't my favorite shirt." It perfectly captures the book's witty and sarcastic tone.""")
+    
 
 if __name__ == '__main__':
     main()
