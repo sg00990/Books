@@ -245,6 +245,8 @@ def main():
         #{"Month": "April", "Title": "Harry Potter and the Sorcerer's Stone", "Author": "J.K. Rowling", "Genre": "Fantasy", "Language": "Japanese", "Start Date": '04-20-2024', "End Date": '05-20-2024', "Rating": 5, "Pages": 483},
         {"Month": "June", "Title": "Carry On", "Author": "Rainbow Rowell", "Genre": "Fantasy", "Language": "English", "Start Date": '06-15-2024', "End Date": '06-20-2024', "Rating": 5, "Pages": 517},
         {"Month": "July", "Title": "Wayward Son", "Author": "Rainbow Rowell", "Genre": "Fantasy", "Language": "English", "Start Date": '07-14-2024', "End Date": '07-17-2024', "Rating": 5, "Pages": 354},
+        {"Month": "July", "Title": "Given #1", "Author": "Natsuki Kizu", "Genre": "Drama", "Language": "Japanese", "Start Date": '07-30-2024', "End Date": '07-31-2024', "Rating": 4.5, "Pages": 181},
+        #{"Month": "July", "Title": "The Serpent and the Wings of Night", "Author": "Carissa Broadbent", "Genre": "Fantasy", "Language": "English", "Start Date": '07-18-2024', "End Date": '07-??-2024', "Rating": 5, "Pages": 452}
     ]
 
 
@@ -1107,6 +1109,35 @@ def main():
 
                 st.write("""**Summary:** The story is supposed to be over. Simon Snow did everything he was supposed to do. He beat the villain. He won the war. He even fell in love. Now comes the good part, right? Now comes the happily ever after… So why can’t Simon Snow get off the couch? What he needs, according to his best friend, is a change of scenery. He just needs to see himself in a new light… That’s how Simon and Penny and Baz end up in a vintage convertible, tearing across the American West. They find trouble, of course. (Dragons, vampires, skunk-headed things with shotguns.) And they get lost. They get so lost, they start to wonder whether they ever knew where they were headed in the first place…""")
                 st.write("""**Thoughts:** Between first reading Carry On in high school and rereading it last month, what was once a single book has now become a trilogy. Wayward Son is a fantastic sequel, continuing the adventures of Simon and his friends after Simon loses his magic. I thoroughly enjoyed the hilarious quips about America, especially the commentary on the outrageous gun laws (😂). One of my favorite quotes is, "Go ahead and shoot me. This isn't my favorite shirt." It perfectly captures the book's witty and sarcastic tone.""")
+
+        page_result = get_pages("Given #1", book_df)
+        author_result = get_author("Given #1", book_df)
+        genre_result = get_genre("Given #1", book_df)
+
+        if (genre_result in selected_genre or not selected_genre) and (page_result <= pages) and (author_result in selected_author or not selected_author):
+            with st.expander("Given #1"):
+                col6, col7 = st.columns(2)
+
+                with col6:
+                    st.image("img/g1.jpg", width=225)
+
+                with col7:
+                    st.write("**Title:** Given #1")
+
+                    st.write(f"**Author:** {author_result}")
+
+                    st.write(f"**Genre:** {genre_result}")
+
+                    language_result = get_language("Given #1", filtered_data)
+                    st.write(f"**Language:** {language_result}")
+
+                    st.write(f"**Number of Pages:** {page_result}")
+
+                    rating_result = get_rating("Given #1", filtered_data)
+                    st.write(f"**My Rating:** {rating_result}/5.0")
+
+                st.write("""**Summary:** Ritsuka Uenoyama is bored with it all—with school, with his basketball club, and even with his one true passion: playing guitar. That is, until the day he finds his favorite hidden napping spot occupied by a strange boy cradling a broken-stringed guitar. At first, Uenoyama is nonplussed by Mafuyu Sato and his slightly odd behavior, but when, on a whim, he asks Mafuyu to sing, the power of that song pierces him to the core.""")
+                st.write("""**Thoughts:** I've watched both the show and the movie for Given, so I thought the manga would be an easy read in Japanese since it's a bit more slice-of-life... Turns out, not so much! It’s packed with slang and band-specific vocabulary that I hadn’t encountered before. Despite the challenge, I found the story absolutely adorable (and sad at times). Uenoyama reluctantly agrees to teach Mafuyu how to play the guitar, but when he hears Mafuyu sing for the first time, he's blown away and just has to have him in the band. Overall, it's a cute and heartwarming story.""")
     
 
 if __name__ == '__main__':
